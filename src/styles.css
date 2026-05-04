@@ -1,3 +1,669 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 @import "tailwindcss";
+
+
+/* ========================================== */
+/* color themes  */
+/* ========================================== */
+
+:root {
+    --color-primary: #006989;
+    --color-secondary: #EAEBED;
+    --color-accent: #7C3AED;
+    --color-hover: #00ACC1;
+
+    --input-height: 24px;
+    --input-height-sm: 40px;
+    --input-height-md: 40px;
+    --input-height-lg: 36px;
+
+    --button-height: 20px;
+    --button-height-sm: 28px;
+    --button-height-md: 28px;
+    --button-height-lg: 36px;
+
+    --transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+
+    /* Size, Width, Spacing ==================================== */
+    /* ======================================== */
+    
+    /* text ======================= */
+    --font-sans: "Inter", ui-sans-serif, system-ui;
+    --text-title-1: 32px; 
+    --text-title-1-sm: 40px; 
+    --text-title-1-md: 40px; 
+    --text-title-1-lg: 48px;
+    
+    --text-title-2: 24px;
+    --text-title-2-sm: 32px;
+    --text-title-2-md: 32px; 
+    --text-title-2-lg: 40px;
+
+    --text-title-3: 20px;
+    --text-title-3-sm: 24px;
+    --text-title-3-md: 24px;
+    --text-title-3-lg: 32px;
+    
+    --text-base-xl: 16px;
+    --text-base-xl-sm: 20px;
+    --text-base-xl-md: 20px;
+    --text-base-xl-lg: 28px;
+    
+    --text-base-large: 12px;
+    --text-base-large-sm: 16px;
+    --text-base-large-md: 16px;
+    --text-base-large-lg: 20px;
+
+    --text-base: 8px;
+    --text-base-sm: 14px;
+    --text-base-md: 16px;
+    --text-base-lg: 16px;
+
+    --text-caption: 6px;
+    --text-caption-sm: 10px;
+    --text-caption-md: 10px;
+    --text-caption-lg: 12px;
+    
+
+    /* border ================ */
+    --border-width-3: 3px;
+    --border-button: 1.5px;
+    --border-input: 1.5px;
+    
+    /* radius ================= */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 999px;
+
+    --radius-button: 8px;
+
+    /* padding =============== */
+    --spacing-main: clamp(0.75rem, 2.5vw, 1.5rem);
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+    --spacing-xl: 24px;
+    --spacing-input: 16px;
+    --spacing-section: clamp(0.75rem, 2.5vw, 1.5rem);
+    --spacing-button: 12px;
+
+    /* width ================ */
+
+
+
+
+    /* Colors, Background ==================================== */
+    /* ======================================== */
+
+    /* principals colors ================ */
+    --color-clr-primary: var(--color-primary);
+    --color-clr-secondary: var(--color-secondary);
+    --color-clr-accent: var(--color-accent);
+    --color-clr-hover: var(--color-hover);
+
+    /* background colors ============== */
+    --color-clr-bg-page: #F8FAFB;
+    --color-clr-bg-page-dark: #0B1215;
+    --color-clr-bg-section: #F8F9FA;
+    --color-clr-bg-section-dark: #11181c;
+    --color-clr-bg-card: #FFFFFF;
+    --color-clr-bg-card-dark: #161F23;
+    --color-clr-bg-disable: #BCC6CC;
+    --color-clr-bg-disable-dark: #3A4449;
+
+    /* border  colors ================= */
+    --color-clr-border: #E2E5E9;
+    --color-clr-border-dark: #263238;
+    --color-clr-border-focus: #006989;
+    --color-clr-border-active: #67C4E0;
+
+
+    --color-clr-border-input: #a0a2a5;
+    --color-clr-border-input-dark: var(--color-clr-border);
+    --color-clr-border-input-disable: var(--color-clr-border);
+    --color-clr-border-input-valid: var(--color-clr-success);
+    --color-clr-border-input-error: var(--color-clr-error);
+
+    /* text colors =================== */
+    --color-clr-text: #101828;
+    --color-clr-text-dark: #F8FAFC;
+    --color-clr-text-secondary: #667085;
+    --color-clr-text-secondary-dark: #CBD5E1;
+    --color-clr-text-disable: #98A2B3;
+    --color-clr-text-disable-dark: #94A3B8;
+    --color-clr-link: #006989;
+    --color-clr-link-dark: #67C4E0;
+    --color-clr-link-hover: var(--color-hover);
+
+    /* Stat colors ================== */
+    --color-clr-active: #67C4E0;
+    --color-clr--hover: var(--color-hover);
+    --color-clr-success: #22C55E;
+    --color-clr-warning: #F59E0B;
+    --color-clr-error: #EF4444;
+    --color-clr-info: #028FC7;
+    --color-clr-accent: var(--color-accent);
+
+    /* button colors ================ */
+    --color-clr-button: var(--color-primary);
+    --color-clr-button-text: var(--color-clr-text-dark);
+    --color-clr-button-hover: var(--color-hover);
+    --color-clr-button-active: var(--color-clr-border-active);
+
+    --color-clr-button-secondary: transparent;
+    --color-clr-button-disable: color-mix(in oklab, var(--color-clr-bg-disable) 60%, transparent);
+    --color-clr-button-disable-dark: var(--color-clr-bg-disable-dark);
+
+    --color-clr-button-ghost: color-mix(in oklab, var(--color-clr-button-disable) 30%, transparent);
+    --color-clr-button-ghost-disable: color-mix(in oklab, var(--color-clr-button-disable) 15%, transparent);
+    --color-clr-button-tertial: transparent;
+}
+
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* color: #a0a2a5; */
+}
+
+body{
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-normal);
+    background: var(--color-clr-bg-page);
+    color: var(--color-clr-text);
+    padding: var(--spacing-main);
+    
+    &:where(.dark, .dark *){
+        background: var(--color-clr-bg-page-dark);
+        color: var(--color-clr-text-dark);
+    }
+}
+
+/* flexbox ========================== */
+/* =============================== */
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-center.column{
+    flex-direction: column;
+}
+.flex-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.flex-between.column{
+    flex-direction: column;
+}
+
+/* texts ============================ */
+/* ================================ */
+.title-1{
+    font-size: var(--text-title-1);
+    color: var(--color-clr-text);
+    font-weight: var(--font-weight-semibold);
+    line-height: normal;
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+
+    @media (width >= 20rem /* xs - */) {
+        font-size: var(--text-title-1-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-title-1-md);
+    }
+    @media (width >= 64rem /* 1024px lg +*/) {
+        font-size: var(--text-title-1-lg);
+    }
+}
+.title-1.secondary{
+    color: var(--color-clr-text-secondary);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-secondary-dark);
+    }
+}
+
+.title-2 {
+    font-size: var(--text-title-2);
+    color: var(--color-clr-text);
+    font-weight: var(--font-weight-semibold);
+    line-height: normal;
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+    
+    @media (width >= 20rem /* xs - */) {
+        font-size: var(--text-title-2-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-title-2-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        font-size: var(--text-title-2-lg);
+    }
+}
+.title-2.secondary{
+    color: var(--color-clr-text-secondary);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-secondary-dark);
+    }
+}
+
+.title-3 {
+    font-size: var(--text-title-3);
+    color: var(--color-clr-text);
+    font-weight: var(--font-weight-semibold);
+    line-height: normal;
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+    
+    @media (width >= 20rem /* xs - */) {
+        font-size: var(--text-title-3-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-title-3-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        font-size: var(--text-title-3-lg);
+    }
+}
+.title-3.secondary{
+    color: var(--color-clr-text-secondary);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-secondary-dark);
+    }
+}
+
+.text-base {
+    font-size: var(--text-base);
+    color: var(--color-clr-text);
+    font-weight: var(--font-weight-normal);
+    line-height: normal;
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+    
+    @media (width >= 20rem /* sm */) {
+        font-size: var(--text-base-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-base-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        font-size: var(--text-base-lg);
+    }
+}
+.text-base.secondary{
+    color: var(--color-clr-text-secondary);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-secondary-dark);
+    }
+}
+
+.text-base-xl {
+    font-size: var(--text-base-xl);
+    color: var(--color-clr-text);
+    font-weight: var(--font-weight-normal);
+    line-height: normal;
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+    
+    @media (width >= 20rem /* sm - */) {
+        font-size: var(--text-base-xl-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-base-xl-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        font-size: var(--text-base-xl-lg);
+    }
+}
+.text-base-xl.secondary{
+    color: var(--color-clr-text-secondary);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-secondary-dark);
+    }
+}
+
+.text-base-large {
+    font-size: var(--text-base-large);
+    color: var(--color-clr-text);
+    font-weight: var(--font-weight-normal);
+    line-height: normal;
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+    
+    @media (width >= 20rem /* sm - */) {
+        font-size: var(--text-base-large-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-base-large-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        font-size: var(--text-base-large-lg);
+    }
+}
+.text-base.secondary{
+    color: var(--color-clr-text-secondary);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-secondary-dark);
+    }
+}
+
+.text-caption{
+    font-size: var(--text-caption);
+    color: var(--color-clr-active);
+    font-weight: var(--font-weight-semibold);
+    line-height: normal;
+    
+    @media (width >= 20rem /* sm - */) {
+        font-size: var(--text-caption-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        font-size: var(--text-caption-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        font-size: var(--text-caption-lg);
+    }
+}
+
+
+/* button classes =============================== */
+/* ========================================= */
+.button{
+    /* font-size: var(--text-base-lg); */
+    height: var(--button-height);
+    border-width: var(--border-button);
+    border-radius: var(--radius-button);
+    padding-inline: var(--spacing-button);
+    padding-block: var(--spacing-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (width >= 20rem /* sm - */) {
+        height: var(--button-heigh-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        height: var(--button-height-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        height: var(--button-height-lg);
+    }
+}
+.button.primary {
+    border-color: var(--color-clr-button);
+    color: var(--color-clr-button-text);
+    background: var(--color-clr-button);
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text);
+    }
+    
+    &:hover{
+        background: var(--color-clr-button-hover);
+        border-color: var(--color-clr-button-hover);
+    }
+    &:active{
+        background: var(--color-clr-button-active);
+        border-color: var(--color-clr-active);
+    }
+    &:disabled{
+        background: var(--color-clr-button-disable);
+        border-color: transparent;
+        color: var(--color-clr-text-disable);
+        cursor: default;
+        
+        &:where(.dark, .dark *){
+            background: var(--color-clr-button-disable-dark);
+            border-color: var(--color-clr-button-disable-dark);
+            color: var(--color-clr-text-disable-dark);
+        }
+    }
+}
+
+.button.secondary {
+    border-color: var(--color-clr-button);
+    background: var(--color-clr-button-secondary);
+    color: var(--color-clr-button);
+    
+    &:hover{
+        border-color: var(--color-clr-button-hover);
+        color: var(--color-clr-button-hover)
+    }
+    &:active{
+        border-color: var(--color-clr-active);
+        color: var(--color-clr-active)
+    }
+    &:disabled{
+        border-color: var(--color-clr-button-disable);
+        color: var(--color-clr-text-disable);
+        cursor: default;
+
+        &:where(.dark, .dark *){
+            border-color: var(--color-clr-button-disable-dark);
+            color: var(--color-clr-button-disable-dark);
+        }
+    }
+}
+
+.button.ghost {
+    border-color: transparent;
+    background: var(--color-clr-button-ghost);
+    color: var(--color-clr-button);
+    
+    &:hover{
+        border-color: transparent;
+        color: var(--color-clr-button-hover)
+    }
+    &:active{
+        border-color: transparent;
+        color: var(--color-clr-active)
+    }
+    &:disabled{
+        border-color: transparent;
+        color: var(--color-clr-text-disable);
+        cursor: default;
+
+        &:where(.dark, .dark *){
+            border-color: var(--color-clr-button-disable-dark);
+            color: var(--color-clr-button-disable-dark);
+        }
+    }
+}
+
+.button.ghost {
+    border-color: transparent;
+    background: var(--color-clr-button-ghost);
+    color: var(--color-clr-button);
+    
+    &:hover{
+        border-color: transparent;
+        color: var(--color-clr-button-hover)
+    }
+    &:active{
+        border-color: transparent;
+        color: var(--color-clr-active)
+    }
+    &:disabled{
+        border-color: transparent;
+        color: var(--color-clr-text-disable);
+        cursor: default;
+
+        &:where(.dark, .dark *){
+            border-color: var(--color-clr-button-disable-dark);
+            color: var(--color-clr-button-disable-dark);
+        }
+    }
+}
+
+.button.tertial {
+    border-color: transparent;
+    background: var(--color-clr-button-tertial);
+    color: var(--color-clr-button);
+    
+    &:hover{
+        border-color: transparent;
+        color: var(--color-clr-button-hover)
+    }
+    &:active{
+        border-color: transparent;
+        color: var(--color-clr-active)
+    }
+    &:disabled{
+        border-color: transparent;
+        color: var(--color-clr-text-disable);
+        cursor: default;
+
+        &:where(.dark, .dark *){
+            border-color: var(--color-clr-button-disable-dark);
+            color: var(--color-clr-button-disable-dark);
+        }
+    }
+}
+
+/* input ============================ */
+/* ================================ */
+.label-text {
+    position: relative;
+
+    width: clamp(290px, 20vw, 1rem);
+    height: var(--input-height-lg);
+    margin-top: var(--spacing-main);
+    border: var(--border-input) solid var(--color-clr-border-input);
+    border-radius: var(--radius-xs);
+    transition: var(--transition);
+    
+    color: var(--color-clr-text);
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+
+    &:has(.input-text:focus){
+        border-color: var(--color-clr-border-focus)
+    }
+    &:has(.input-text:active){
+        border-color: var(--color-clr-border-active)
+    }
+    &:has(.input-text:valid){
+        border-color: var(--color-clr-border-input-valid)
+    }
+    
+    @media (width >= 20rem /* sm */) {
+        border-radius: var(--radius-sm);
+        height: var(--input-height-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        border-radius: var(--radius-sm);
+        height: var(--input-height-md);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        height: var(--input-height-lg);
+    }
+}
+
+.label-text .input-text{
+    height: 100%;
+    width: 100%;
+    border: transparent;
+    outline: none;
+    border-radius: var(--radius-xs);
+    padding-inline: var(--spacing-sm);
+    color: var(--color-clr-text);
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark)
+    }
+
+    @media (width >= 20rem /* sm */) {
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        border-radius: var(--radius-sm);
+    }
+}
+
+.label-text .label-1{
+    position: absolute;
+    top: -50%;
+    left: 0;
+    transform: translate(0%, -50%);
+
+    color: var(--color-clr-text);
+
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+    }
+}
+.input-text:focus ~ .label-1,
+.input-text:valid ~ .label-1 {
+    color: transparent;
+}
+
+.label-text .label-2{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+    color: color-mix(in oklab, var(--color-clr-text) 40%, transparent );
+    transition: var(--transition);
+    padding: var(--spacing-sm);
+    cursor: text;
+    display: flex;
+    
+}
+.input-text:focus ~ .label-2,
+.input-text:valid ~ .label-2 {
+    top: -5%;
+    left: 2%;
+    height: fit-content;
+    content: 'Nom';
+    
+}
+
+.label-text .label-2::after{
+    position: absolute;
+    height: 80%;
+    content: 'eg. John';
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+    color: color-mix(in oklab, var(--color-clr-text) 40%, transparent);
+    transition: var(--transition);
+    padding: var(--spacing-sm);
+    cursor: text;
+    display: flex;
+    align-items: center;
+    background: var(--color-clr-bg-page);
+}
+.input-text:focus ~ .label-2::after,
+.input-text:valid ~ .label-2::after{
+    content: 'Nom';
+}
