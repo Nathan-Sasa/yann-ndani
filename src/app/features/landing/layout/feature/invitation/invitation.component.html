@@ -1,0 +1,77 @@
+<section 
+
+    class="w-full flex flex-col lg:flex-row items-start justify-center lg:justify-between gap-main px-main realtive"
+    >
+    <div
+        class="w-full lg:w-1/2 flex flex-col gap-main text-center lg:text-start"
+        >
+        <h2
+            class="title-2"
+            >
+            Invitation
+        </h2>
+        <p 
+            class="text-3"
+            >
+            Inviter Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem fugiat consectetur deleniti vero, est quas, alias suscipit explicabo dolor voluptates aspernatur distinctio aliquid dolorum enim rerum quod nostrum totam. Repellat non veniam harum voluptate cum accusamus at dolore quos impedit.
+        </p>
+        <p class="text-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem dolores consequatur asperiores iure delectus!
+        </p>
+        <p class="text-clr-active">Lorem ipsum dolor sit amet.</p>
+        <div class="hidden lg:flex items-center gap-main">
+            <span>Ragarder la procédure </span>
+            <button
+                (click)="toScrollTop(); togglePopVideo()"
+                class="button secondary"
+                >
+                <lucide-icon
+                    [img]="icons.play"
+                ></lucide-icon>
+            </button>
+
+            @if(popVideoOpen){
+                <div
+                    class="absolute inset-0 top-0 bg-clr-bg-section-dark/10 backdrop-blur-lg z-20 w-screen h-screen flex items-end justify-center pb-section-y"
+                    >
+                    <button
+                        (click)="togglePopVideo()"
+                        class="button primary absolute top-main right-main"
+                        >
+                        <lucide-icon
+                            [img]="icons.close"
+                        ></lucide-icon>
+                    </button>
+                    <video 
+                        controls
+                        muted
+                        autoplay
+                        width="250"
+                        height="200"
+                        poster="assets/site/logos/logo_bingl.png"
+                        class="w-full lg:w-8/10 h-7/10"
+                        >
+                        <source src="assets/images/development/video.mp4" type="video/mp4">
+                        votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                </div>
+            }
+        </div>
+    </div>
+    <div
+        class="w-full h-auto lg:w-1/2 overflow-hidden relative flex items-center justify-center"
+        >
+        <app-organisation></app-organisation>
+    </div>
+    <div class="flex lg:hidden items-center justify-center w-full gap-main">
+        <span class="text-base-large">Ragarder la procédure </span>
+        <button
+            (click)="toScrollTop(); togglePopVideo()"
+            class="button secondary"
+            >
+            <lucide-icon
+                [img]="icons.play"
+            ></lucide-icon>
+        </button>
+    </div>
+</section>

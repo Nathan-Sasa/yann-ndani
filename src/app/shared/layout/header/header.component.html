@@ -1,0 +1,133 @@
+<header
+    class="w-full @max-xs:h-[15vh] h-[12vh] md:h-[10vh] fixed top-0 left-0 flex items-center justify-between p-main bg-transparent shadow-none z-10 cubicTransition || border-b! border-transparent"
+    [class.-translate-y-2/1]="!navBarVisible"
+    >
+    <a
+        href="/"
+        class="flex items-center gap-lg realtive"
+        >
+        <span class="card-avatar border-clr-border-dark!">
+            <img 
+                src="" 
+                alt=""
+            >
+        </span>
+        <h1
+            id="appName"
+            class="title-3 transition text-clr-text-dark!"
+            >
+            {{app.name}}
+        </h1>
+    </a>
+
+    <div
+        class="flex-center gap-x-16 max-lg:hidden!"
+        >
+        <ul
+            class="flex-center gap-1"
+            >
+            <li>
+                <a 
+                    [routerLink]="['/home']"
+                    [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                    class="button tertial hover:bg-clr-button-ghost!"
+                    >
+                    Acceuil
+                </a>
+            </li>
+            <li>
+                <a 
+                    [routerLink]="['/dashboard']"
+                    [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                    class="button tertial hover:bg-clr-button-ghost/50!"
+                    >
+                    Tableau de bord
+                </a>
+            </li>
+            <li>
+                <a 
+                    [routerLink]="['/documentation']"
+                    [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                    class="button tertial hover:bg-clr-button-ghost/50!"
+                    >
+                    Documentation
+                </a>
+            </li>
+            <li>
+                <a 
+                    [routerLink]="['/admin']"
+                    [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                    class="button tertial hover:bg-clr-button-ghost/50!"
+                    >
+                    Admin
+                </a>
+            </li>
+        </ul>
+    
+        <ul
+            class="flex-center gap-4"
+            >
+            <li>
+                <a 
+                    [routerLink]="['/register']"
+                    class="button tertial"
+                    >
+                    s'inscrire
+                </a>
+            </li>
+            <li >
+                <a 
+                    [routerLink]="['/login']"
+                    class="button primary"
+                    >
+                    Se connecter
+                </a>
+            </li>
+            <app-theme></app-theme>
+        </ul>
+    </div>
+    <p-button (click)="isMenuOpen = true" icon="pi pi-bars" class="2xl:scale-150! lg:hidden!" />
+</header>
+
+<p-drawer [header]="app.name" [(visible)]="isMenuOpen" position="right">
+    <ul
+        class="flex flex-col gap-1"
+        >
+        <li>
+            <a 
+                [routerLink]="['/home']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial hover:bg-clr-button-ghost! justify-start!"
+                >
+                Acceuil
+            </a>
+        </li>
+        <li>
+            <a 
+                [routerLink]="['/dashboard']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial hover:bg-clr-button-ghost/50! justify-start!"
+                >
+                Tableau de bord
+            </a>
+        </li>
+        <li>
+            <a 
+                [routerLink]="['/documentation']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial hover:bg-clr-button-ghost/50! justify-start!"
+                >
+                Documentation
+            </a>
+        </li>
+        <li>
+            <a 
+                [routerLink]="['/admin']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial hover:bg-clr-button-ghost/50! justify-start!"
+                >
+                Admin
+            </a>
+        </li>
+    </ul>
+<p>

@@ -1,0 +1,31 @@
+<section
+    class="w-screen min-h-screen flex flex-col relative bg-clr-bg-section dark:bg-clr-bg-section-dark px-main py-section-y gap-y-section-y"
+    >
+    <app-sectionHeader [texts]="headerTitles"></app-sectionHeader>
+
+    <div
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+        @for(item of items; track $index){
+            <div
+                class="card transparent"
+                >
+                <div
+                    class="flex items-center gap-main"
+                    >
+                    <span class="card-icon">
+                        <lucide-icon [img]="item.icon"></lucide-icon>
+                    </span>
+                    <h4 class="title-4">
+                        {{item.title}}
+                    </h4>
+                </div>
+                <p
+                    class="text-justify mt-main"
+                    >
+                    {{item.description}}
+                </p>
+            </div>
+            }
+        </div>
+</section>
