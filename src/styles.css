@@ -51,9 +51,9 @@
     --text-title-3-lg: 32px;
 
     --text-title-4: 16px;
-    --text-title-4-sm: 20;
-    --text-title-4-md: 24px;
-    --text-title-4-lg: 28;
+    --text-title-4-sm: 20px;
+    --text-title-4-md: 20px;
+    --text-title-4-lg: 28px;
     
     --text-base-xl: 16px;
     --text-base-xl-sm: 20px;
@@ -95,6 +95,7 @@
     /* padding =============== */
     --spacing-main: clamp(0.75rem, 2.5vw, 1.5rem);
     --spacing-section-y: clamp(3rem, 10vw, 6rem);
+    --spacing-section-y-xl: clamp(3.75rem, 12.5vw, 7.5rem);
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 12px;
@@ -206,7 +207,8 @@ body{
 }
 
 aside {
-    color: #bdcfd21b;
+    color: #bdcfd20a
+    /* color: var(--color-gray-500) */
 }
 
 /* flexbox ========================== */
@@ -497,9 +499,10 @@ aside {
     background: var(--color-clr-button);
     transition: color .1s ease;
 
-    &:where(.dark, .dark *){
+    /* &:where(.dark, .dark *){
         color: var(--color-clr-text);
-    }
+        color: var(--color-clr-text-dark);
+    } */
     
     &:hover{
         background: var(--color-clr-button-hover);

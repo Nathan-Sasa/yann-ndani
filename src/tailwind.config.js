@@ -11,6 +11,7 @@ module.exports = {
     },
     content: [
         './src/**/*.{html,ts}',
+        './public/**/*.{html,ts}',
     ],
     plugins: [],
 }

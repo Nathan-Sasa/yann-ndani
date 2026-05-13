@@ -1,0 +1,51 @@
+<section
+    class="w-screen min-h-screen bg-clr-bg-section dark:bg-clr-bg-section-dark flex flex-col relative py-section-y-xl gap-y-section-y-xl feature"
+    >
+    <span 
+        class="absolute w-full top-0 h-6 mask-b-from-10% bg-clr-bg-page dark:bg-clr-bg-page-dark "
+    ></span>
+    <app-sectionHeader 
+        appScrollAnim
+        animType="slide-up"
+        [translateSpeed]="0.7"
+        [texts]="headerTitles"
+    ></app-sectionHeader>
+    
+    <div
+        #scrollImpExpTop
+        class="w-full relative mt-8"
+        >
+        <app-import-export-files ></app-import-export-files>
+    </div>
+
+    <div
+        #scrollImpTrash
+        class="w-full relative"
+        >
+        <app-corbeille></app-corbeille>
+    </div>
+
+    <div
+        #scrollImpCodeBarre
+        class="w-full relative"
+        >
+        <app-code-barre></app-code-barre>
+    </div>
+
+    <div
+        #scrollImpCodeBarre
+        class="w-full relative"
+        >
+        <app-expiration-date></app-expiration-date>
+    </div>
+
+    <div
+        #scrollTop
+        class="w-full relative"
+        >
+        <!-- <app-invitation (scrollTo)="scrollToTop()"></app-invitation> -->
+    </div>
+    <span 
+        class="absolute w-full bottom-0 h-6 mask-t-from-10% bg-clr-bg-page dark:bg-clr-bg-page-dark"
+    ></span>
+</section>
