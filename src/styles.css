@@ -182,7 +182,10 @@
     --color-clr-button-tertial: transparent;
 
     /* input colors =================== */
-    --color-clr-input-disable: var(--color-clr-button-disable)
+    --color-clr-input-disable: var(--color-clr-button-disable);
+
+    /* color active transparent 15% */
+    --color-clr-active-transparent: color-mix(in oklab, var(--color-clr-active) 15%, transparent);
 }
 
 
@@ -932,6 +935,13 @@ html.dark .input-text:user-invalid ~ .label-2::after
         width: 48px;
     }
 }
+.card-avatar img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+}
+
 .card-avatar.avatar-xs {
     height: 20px;
     width: 20px;

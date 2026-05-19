@@ -5,6 +5,8 @@ import { AboutComponent } from '../templates/about/about.component';
 import { FeatureComponent } from '../templates/feature/feature.component'
 import { InstallationComponent } from '../templates/installation/installation.component';
 import { NetworkFeatureComponent } from '../templates/network-feature/network-feature.component';
+import { CtaComponent } from '../templates/cta/cta.component';
+import { TestimonialComponent } from '../templates/testimonial/testimonial.component';
 
 @Component({
     selector: 'app-landing',
@@ -14,7 +16,9 @@ import { NetworkFeatureComponent } from '../templates/network-feature/network-fe
         AboutComponent,
         FeatureComponent,
         InstallationComponent,
-        NetworkFeatureComponent
+        NetworkFeatureComponent,
+        CtaComponent,
+        TestimonialComponent
 	],
     templateUrl: './landing.component.html',
     styleUrl: './landing.component.css',

@@ -1,1 +1,48 @@
-<p>cta.component works!</p>
+<section
+    #ctaBgHoverEffect 
+    id="ctaBgHoverContainer"
+    class="ctaBgHoverContainer w-full h-screen relative flex items-center justify-center px-main"
+    >
+    <div
+        class="absolute top-0 left-0 bg-clr-primary flex items-center justify-center gap-main z-1 w-full h-full"
+        >
+        <img 
+            src="https://framerusercontent.com/images/10Gn2eLO0jG5LzUukp4c2AXeg.png?fit=cover&format=webp&quality=75" 
+            alt=""
+            class="w-full h-full object-cover object-center"
+        >
+    </div>
+    <div
+        class="flex flex-col gap-main z-5 justify-center items-center text-center"
+        >
+        <h3 
+            class="text-caption text-base text-base-caption"
+            >
+            Commencez dès aujourd'hui
+        </h3>
+        <h2
+            class="title-1 text-clr-text-dark!"
+            >
+            Simplifiez la gestion de votre stock avec notre application de gestion d'inventaire
+        </h2>
+        <p
+            class="text-base-large text-clr-text-secondary-dark!"
+            >
+            Gérez votre stock de manière efficace et sans effort grâce à notre application de gestion d'inventaire conviviale et puissante.
+        </p>
+        <button
+            class="getButton button primary border-clr-hover! bg-clr-hover! hover:bg-clr-primary! active:bg-clr-active! active:border-clr-active! text-title-2! text-clr-text-dark! p-main!"
+            >
+            Commencer maintenant
+        </button>
+    </div>
+    <div
+        class="w-full h-full absolute grid grid-cols-14 gap-sm top-0 left-0  z-4 items-center justify-center overflow-hidden"
+        >
+        @for(item of ctaCardHover; track $index){
+            <div
+                class="ctaCardHover h-20 rounded-xs border border-clr-primary transition duration-100 ease-in relative"
+            ></div>
+        }
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<section
+    class="w-screen min-h-screen  flex flex-col relative py-section-y-xl gap-y-section-y feature p-main"
+    >
+    <app-sectionHeader
+        [texts]="headerTitles"
+    ></app-sectionHeader>
+
+    <div
+        class="w-full flex justify-center gap-main"
+        >
+        @for(testimonial of testimonials; track $index){
+            <div
+                class="card"
+                >
+                <div
+                    class="flex items-start gap-sm"
+                    >
+                    <span
+                        class="card-avatar"
+                        >
+                        <img 
+                            [src]="testimonial.avatar" 
+                            [alt]="testimonial.name"
+                            class=""
+                        >
+                    </span>
+                    <span
+                        class="flex flex-col gap-sm items-start"
+                        >
+                        <h4
+                            class="text-base-large"
+                            >
+                            {{ testimonial.name }}
+                        </h4>
+                        <p
+                            class="text-base-small"
+                            >
+                            {{ testimonial.post}}
+                        </p>
+                    </span>
+                </div>
+                <div>
+                    <p>
+                        {{testimonial.text}}
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</section>

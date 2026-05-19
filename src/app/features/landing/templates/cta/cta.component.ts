@@ -1,13 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 
 @Component({
 	selector: 'app-cta',
 	imports: [
-		
+
 	],
 	templateUrl: './cta.component.html',
 	styleUrl: './cta.component.css',
 })
-export class CtaComponent {
+export class CtaComponent implements AfterViewInit {
 
+	@ViewChild('ctaBgHoverEffect', {static: false}) ctaBgHoverEffect!: ElementRef
+	
+	ctaCardHover = [
+		{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+		{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+		{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+		{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+		{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+		{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
+	]
+
+	ngAfterViewInit(): void {
+		this.loadCtaBgHoverEffect()
+	}
+
+	loadCtaBgHoverEffect() {
+		const parent = this.ctaBgHoverEffect.nativeElement;
+		parent.addEventListener('mousemove', (e : MouseEvent) => {
+			const cards = parent.getElementsByClassName('ctaCardHover');
+
+			for( const card of cards as any as HTMLElement[]) {
+				const rect = card.getBoundingClientRect();
+
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+
+				card.style.setProperty('--mouse-x', `${x}px`);
+				card.style.setProperty('--mouse-y', `${y}px`)
+				console.log('mouse position : ', x, ',', y)
+			}
+		})
+	}
 }

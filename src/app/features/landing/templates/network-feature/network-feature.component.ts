@@ -1,7 +1,7 @@
 import { Component, signal, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { SectionHeaderComponent } from '../../layouts/section-header/section-header.component';
 import { ConnectDeviceComponent } from './connect-device/connect-device.component';
-import { LucideAngularModule, MonitorSmartphoneIcon } from 'lucide-angular';
+import { LucideAngularModule, MonitorSmartphoneIcon, SendIcon } from 'lucide-angular';
 import { OrganisationComponent } from '../../layouts/organisation/organisation.component';
 
 @Component({
@@ -26,7 +26,8 @@ export class NetworkFeatureComponent implements AfterViewInit {
 	})
 
 	icons = {
-		device: MonitorSmartphoneIcon
+		device: MonitorSmartphoneIcon,
+		send: SendIcon
 	}
 
 	ngAfterViewInit(): void {

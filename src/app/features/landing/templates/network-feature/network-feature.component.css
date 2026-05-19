@@ -14,27 +14,22 @@
     }        
 }
 
-.cardHover::after {
+/* .cardHover::after {
     opacity: 1;
     background: radial-gradient(
         700px circle at var(--mouse-x) var(--mouse-y), var(--color-clr-bg-page), transparent 60%
     );
     
-    /* &:where(.dark, .dark *){
-        background: radial-gradient(
-            400px circle at var(--mouse-x) var(--mouse-y), var(--color-clr-active), transparent 100%
-        ) !important;
-    } */
-}
+} */
 
-html .cardBgHoverContainer .cardHover::after {
+.cardBgHoverContainer:hover .cardHover::after {
     opacity: 1;
-    background: radial-gradient(
+    /* background: radial-gradient(
         400px circle at var(--mouse-x) var(--mouse-y), var(--color-clr-bg-page-dark), transparent 60%
-    ) !important;
+    ) !important; */
 }
 
-html .cardBgHoverContainer:hover .cardHover::before{
+.cardBgHoverContainer:hover .cardHover::before{
     opacity: 1;
 }
 
