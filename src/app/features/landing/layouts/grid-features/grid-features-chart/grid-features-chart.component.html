@@ -1,0 +1,121 @@
+<div
+    class="w-full relative flex flex-col gap-main lg:gap-section overflow-hidden"
+    >
+    <div
+        class="flex flex-col gap-sm"
+        >
+        <span
+            class="flex items-center gap-xs"
+            >
+            <p
+                class=" text-base-sm md:text-base-md lg:text-base-lg font-semibold!"
+                >
+                Aperçu en direct
+            </p>
+            <span
+                class="w-2 h-2 rounded-full bg-clr-success animate-pulse"
+            ></span>
+        </span>
+        <p
+            class=" text-base md:text-base-sm lg:text-base-sm secondary"
+            >
+            Suivez en temps réel le flux de votre entreprise grâce notre fonctionnalité connecté.
+        </p>
+    </div>
+
+    <div
+        class="w-full h-56 md:h-90 relative overflow-hidden"
+        >
+        <div
+            class="w-300 h-200 relative  flex flex-col items-start justify-start gap-lg pt-lg"
+            >
+            <div
+                class="w-full flex gap-xl lg:gap-section-y border-y border-line-color py-xs lg:py-lg"
+                >
+                <span
+                    class="min-w-14.5 lg:min-w-24 flex flex-col items-start gap-sm relative"
+                    >
+                    <p
+                        class="max-md:text-caption-sm md:text-caption-lg lg:text-base-lg text-clr-text-secondary"
+                        >
+                        Vente
+                    </p>
+                    <p
+                        class="text-title-2 md:text-title-2-md flex items-center"
+                        >
+                        {{sales}}
+                    </p>
+                </span>
+                <span
+                    class="flex flex-col items-start gap-sm relative"
+                    >
+                    <p
+                        class="max-md:text-caption-sm md:text-caption-lg lg:text-base-lg text-clr-text-secondary"
+                        >
+                        Stock
+                    </p>
+                    <h2
+                        class="text-title-2 md:text-title-2-md flex items-center"
+                        >
+                        {{stock.value}}
+                        <span
+                            [class.up]="stock.trend === 'up'"
+                            [class.down]="stock.trend === 'down'"
+                            [class.stable]="stock.trend === 'stable'"
+                            class="font-normal! transition duration-300"
+                            >
+                            @switch (stock.trend) {
+                                @case ('up') {
+                                    ↑
+                                }
+                                @case ('down') {
+                                    ↓
+                                }
+                                @default {
+                                    →
+                                }
+                            }
+                        </span>
+                    </h2>
+                </span>
+            </div>
+
+            <div
+                class="w-full flex flex-col relative"
+                >
+                <div
+                    class="w-full flex items-center gap-sm"
+                    >
+                    <p
+                        class="text-title-4 md:text-title-4-md"
+                        >
+                        1.2k $
+                    </p>
+                    <p
+                        class="text-base secondary"
+                        >
+                        Bénéfice ce mois-ci
+                    </p>
+                </div>
+                <div
+                    class="w-full h-46 md:h-104 lg:h-64.5 relative overflow-hidden"
+                    >
+                    <span class="w-2 h-full mask-r-from-20% bg-clr-bg-card dark:bg-clr-bg-card-dark absolute top-1/2 left-0 -translate-y-1/2 z-5"></span>
+                    <!-- <span class="w-4 h-full mask-l-from-50% bg-clr-bg-page dark:bg-clr-bg-page-dark absolute top-1/2 -right-xs -translate-y-1/2 z-5"></span> -->
+                    <div
+                        appScrollAnim
+                        animType="slide-up"
+                        [translateSpeed]="0.7"
+                        class="w-full h-full -left-xs absolute top-0 md:top-0 lg:top-xl -translate-x-1/4 md:-translate-x-16 lg:-translate-x-16 -translate-y-6.5 md:-translate-y-14 lg:-translate-y-8 graph"
+                    ></div>
+                    <div
+                        appScrollAnim
+                        animType="slide-up"
+                        [translateSpeed]="0.7"
+                        class="w-full h-full -left-xs absolute top-0 md:top-2 lg:top-xl -translate-x-1/4 md:-translate-x-16 lg:-translate-x-16 translate-y-4 md:translate-y-1 lg:translate-y-8.5 graph-2"
+                    ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

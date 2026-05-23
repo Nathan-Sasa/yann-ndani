@@ -1,0 +1,8 @@
+.lucide{
+    width: 56px !important;
+    height: 64px !important;
+    stroke-width: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

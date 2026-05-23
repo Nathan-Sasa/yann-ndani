@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { LucideAngularModule, PlayIcon, XIcon } from 'lucide-angular';
+import { LucideAngularModule, PlayIcon, XIcon, DownloadIcon, CogIcon } from 'lucide-angular';
 import { SectionHeaderComponent } from '../../layouts/section-header/section-header.component';
 
 @Component({
@@ -15,7 +15,9 @@ export class InstallationComponent {
 
 	icons ={ 
 		play: PlayIcon,
-		close: XIcon
+		close: XIcon,
+		download: DownloadIcon,
+		install: CogIcon
 	}
 
 	headerTitles = signal({

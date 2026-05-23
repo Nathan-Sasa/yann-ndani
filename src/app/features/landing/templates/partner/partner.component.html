@@ -1,0 +1,76 @@
+
+<section
+    class="w-full h-auto lg:h-[80vh] px-main py-section-y relative flex flex-col gap-section"
+    >
+    <app-sectionHeader
+        [texts]="headerTitles"
+    ></app-sectionHeader>
+    
+    <section
+        class="w-full h-[20vh] p-main flex flex-col relative overflow-x-hidden"
+        >
+        <span class="w-4 h-full mask-r-from-50% bg-clr-bg-page dark:bg-clr-bg-page-dark absolute top-1/2 -left-xs -translate-y-1/2 z-5"></span>
+        <span class="w-4 h-full mask-l-from-50% bg-clr-bg-page dark:bg-clr-bg-page-dark absolute top-1/2 -right-xs -translate-y-1/2 z-5"></span>
+        <div
+            #partnerMarqueeContent 
+            class="marquee-wrapper-col flex items-center gap-main overflow-hidden absolute w-fit p-sm h-full top-1/2 -translate-y-1/2"
+            >
+            @for (partner of partners; track $index) {
+                <div
+                    class="flex items-center gap-md min-w-fit! card"
+                    >
+                    <span
+                        class="card-avatar"
+                        >
+                        <img 
+                            [src]="partner.avatar" 
+                            [alt]="partner.name"
+                        >
+                    </span>
+                    <span
+                        class="flex flex-col gap-xs"
+                        >
+                        <p
+                            class="text-base-large font-semibold"
+                            >
+                            {{partner.name}}
+                        </p>
+                        <p
+                            class="text-base-small secondary w-fit"
+                            >
+                            {{partner.poste}}
+                        </p>
+                    </span>
+                </div>
+            }
+            @for (partner of partners; track $index) {
+                <div
+                    class="flex items-center gap-md min-w-fit! card"
+                    >
+                    <span
+                        class="card-avatar"
+                        >
+                        <img 
+                            [src]="partner.avatar" 
+                            [alt]="partner.name"
+                        >
+                    </span>
+                    <span
+                        class="flex flex-col gap-xs"
+                        >
+                        <p
+                            class="text-base-large font-semibold"
+                            >
+                            {{partner.name}}
+                        </p>
+                        <p
+                            class="text-base-small secondary"
+                            >
+                            {{partner.poste}}
+                        </p>
+                    </span>
+                </div>
+            }
+        </div>
+    </section>
+</section>

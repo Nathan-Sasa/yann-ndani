@@ -1,0 +1,70 @@
+<div
+    class="w-full flex flex-col gap-md"
+    >
+    <div
+        class="w-full card flex flex-col gap-sm"
+        >
+        <span
+            class="flex items-center gap-xs"
+            >
+            <p
+                class=" text-base-sm md:text-base-md lg:text-base-lg font-semibold!"
+                >
+                Audit
+            </p>
+        </span>
+        <div
+            class="w-full flex gap-md"
+            >
+            @for(avatar of avatars.slice(0, 2); track $index){
+                <span
+                    class="card-avatar avatar-xs border-2! border-clr-border! nth-[2]:-translate-x-1/2 nth-[3]:-translate-x-1/1 nth-[4]:-translate-x-3/2"
+                    >
+                    <img 
+                        [src]="avatar.image"
+                        [alt]="avatar.alt"
+    
+                    />
+                </span>
+            }
+        </div>
+        <p
+            class=" text-base md:text-base-sm lg:text-base-sm secondary"
+            >
+            Invitez d'autres personnes si le besoin vous sent, pour vous aider dans votre contrôle flux. Et vous pouvez aussi être invité par d'autres personnes que vous connaissez qui utilisent notre application et fonctionnalité connectée.
+        </p>
+    </div>
+
+    <div
+        class="w-full card flex flex-col gap-sm bg-clr-primary!"
+        >
+        <span
+            class="flex items-center gap-xs"
+            >
+            <p
+                class=" text-base-sm md:text-base-md lg:text-base-lg font-semibold! text-clr-text-dark!"
+                >
+                Analyse experte
+            </p>
+        </span>
+        <div
+            class="w-full flex gap-md"
+            >
+            @for(avatar of avatars.slice(0, 3); track $index){
+                <span
+                    class="card-avatar avatar-xs border-2! border-clr-border! nth-[2]:-translate-x-1/2 nth-[3]:-translate-x-1/1"
+                    >
+                    <img 
+                        [src]="avatar.image"
+                        [alt]="avatar.alt"
+                    />
+                </span>
+            }
+        </div>
+        <p
+            class=" text-base md:text-base-sm lg:text-base-sm secondary text-clr-text-secondary-dark!"
+            >
+            Faites appel à nos experts comptable si vous êtes dans le besoin, pour avoir une analyse comptable professionnelle.
+        </p>
+    </div>
+</div>

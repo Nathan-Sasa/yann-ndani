@@ -14,9 +14,16 @@ export const routes: Routes = [
 
     // home route
     {
-        title: 'Accueil',
+        title: 'Yann ndani',
         path: 'home',
         loadComponent: ()=> import('./features/landing/pages/landing.component').then(m => m.LandingComponent)
+    },
+
+    // documentation routes
+    {
+        title: 'Guid',
+        path: 'documentation',
+        loadComponent: ()=> import('./features/documentation/page/documentation.component').then(m => m.DocumentationComponent)
     },
 
 

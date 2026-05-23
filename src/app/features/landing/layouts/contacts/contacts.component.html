@@ -1,0 +1,286 @@
+<section
+    class="w-full min-h-screen relative flex flex-col px-main gap-main pt-section-y"
+    >
+    <div
+        class="flex flex-col gap-main justify-center items-center text-center"
+        >
+        <h3 
+            class="text-caption text-base text-base-caption"
+            >
+            Contactez-nous
+        </h3>
+        <h2
+            class="title-4 text-clr-text-dark!"
+            >
+            Simplifiez la gestion de votre stock avec notre application de gestion d'inventaire
+        </h2>
+    </div>
+
+    <div
+        class="w-full min-h-screen relative grid grid-cols-2 lg:grid-cols-5 gap-main"
+        >
+        <div 
+            class="col-span-5 lg:col-span-3 min-h-[60vh] bg-clr-bg-section/10! backdrop-blur-sm!  border-clr-button-disable-dark/25! hover:border-clr-hover! card shadow-sm! relative flex flex-col gap-section-y cubicTransition"
+            >
+            <div
+                class="w-full flex items-center gap-sm"
+                >
+                <span
+                    class="card card-icon shadow-none! w-12 h-12 bg-clr-active-transparent! border! border-clr-button-disable-dark/25!"
+                    >
+                    <lucide-icon
+                        [img]="icons.contact"
+                    ></lucide-icon>
+                </span>
+                <h4
+                    class="text-base-large text-clr-text-dark!"
+                    >
+                    Écrire un message
+                </h4>
+            </div>
+            <form
+                [formGroup]="form"
+                (submit)="onSubmit(); $event.preventDefault()"
+                target="_blank"
+                class="grid grid-cols-1 md:grid-cols-2 gap-y-lg gap-md"
+                >
+                <div
+                    class="col-span-1 flex relative"
+                    >
+                    <label 
+                        for="name"
+                        class="label-input primary w-full!"
+                        >
+                        <input 
+                            type="text"
+                            formControlName="fullName"
+                            id="name"
+                            required
+                            class="input-text primary"
+                        >
+                        <span
+                            class="label-1"
+                            >
+                            Nom complet
+                        </span>
+                        <span
+                            class="label-2 fullName"
+                            >
+                        </span>
+                    </label>
+                </div>
+                <div
+                    class="col-span-1 flex relative"
+                    >
+                    <label 
+                        for="profession"
+                        class="label-input primary w-full!"
+                        >
+                        <input 
+                            type="text"
+                            formControlName="poste"
+                            id="profession"
+                            required
+                            class="input-text primary"
+                        >
+                        <span
+                            class="label-1"
+                            >
+                            Profession
+                        </span>
+                        <span
+                            class="label-2 profession"
+                            >
+                        </span>
+                    </label>
+                </div>
+                <div
+                    class="col-span-1 md:col-span-2 flex relative"
+                    >
+                    <label 
+                        for="message"
+                        class="label-input textarea primary w-full!"
+                        >
+                        <textarea 
+                            name="message"
+                            formControlName="message"
+                            id="message"
+                            required
+                            class="input-text primary textarea resize-none"
+                        ></textarea>
+                        <span
+                            class="label-1"
+                            >
+                            Message
+                        </span>
+                        <span
+                            class="label-2 message"
+                            >
+                        </span>
+                    </label>
+                </div>
+
+                <div
+                    class="col-span-1 md:col-span-2 flex relative"
+                    >
+                    <button
+                        [disabled]="form.invalid"
+                        class="button cta text-clr-text-dark border-clr-hover bg-clr-hover w-full! flex hover:border-clr-active hover:bg-clr-active active:scale-98 cubicTransition"
+                        >
+                        {{textSubmit}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    
+
+        <div 
+            class="col-span-5 lg:col-span-2 min-h-[40vh] lg:min-h-[60vh] bg-clr-bg-section/10! backdrop-blur-sm!  border-clr-button-disable-dark/25! hover:border-clr-hover! card shadow-sm! flex flex-col gap-main cubicTransition"
+            >
+            <div
+                class="w-full flex items-center gap-sm"
+                >
+                <span
+                    class="card card-icon shadow-none! w-12 h-12 bg-clr-active-transparent! border! border-clr-button-disable-dark/25!"
+                    >
+                    <lucide-icon
+                        [img]="icons.mail"
+                    ></lucide-icon>
+                </span>
+                <h4
+                    class="text-base-large text-clr-text-dark!"
+                    >
+                    Contact
+                </h4>
+            </div>
+            <div
+                class="flex flex-col gap-main"
+                >
+                <h4
+                    class="title-4 text-clr-text-dark!"
+                    >
+                    Mail
+                </h4>
+                <p
+                    class="text-base-small z-5 text-clr-text-dark!"
+                    >
+                    Connectez votre application local au plateform Yann ndani pour suivre toutes les opérations de votre entreprise avec vos appareils. Ainsi continuer à faire les opérations hors-ligne et Yann synchronise dès que l'application et connectée à internet.
+                </p>
+            </div>
+            <div
+                class="flex flex-col items-center justify-center gap-xl lg:gap-main"
+                >
+                <!-- <i class="pi pi-whatsapp text-7xl!"></i> -->
+                 <lucide-icon
+                    [img]="icons.send"
+                    class="lucide scale-200 text-clr-text-dark!"
+                ></lucide-icon>
+                <a
+                    href="mailto:contact@yannndani.com?subject=Demande%20d'informations%20-%20CTPro%20Services&body={{message.whatsapp}}"
+                    class="button text-clr-text bg-clr-bg-page hover:bg-clr-bg-page-dark hover:text-clr-text-dark border-transparent! hover:scale-110 active:bg-clr-active active:text-clr-text-dark active:scale-90 transition-[background] ease-in z-6"
+                    >
+                    Envoyez-nous un mail
+                </a>
+            </div>
+        </div>
+    
+    
+        <div 
+            class="col-span-5 lg:col-span-2 min-h-[40vh] lg:min-h-[60vh] bg-clr-bg-section/10! backdrop-blur-sm!  border-clr-button-disable-dark/25! hover:border-clr-hover! card shadow-sm! flex flex-col gap-main cubicTransition"
+            >
+            <div
+                class="w-full flex items-center gap-sm"
+                >
+                <span
+                    class="card card-icon shadow-none! w-12 h-12 bg-clr-active-transparent! border! border-clr-button-disable-dark/25!"
+                    >
+                    <lucide-icon
+                        [img]="icons.conversation"
+                    ></lucide-icon>
+                </span>
+                <h4
+                    class="text-base-large text-clr-text-dark!"
+                    >
+                    Discussion
+                </h4>
+            </div>
+            <div
+                class="flex flex-col gap-main"
+                >
+                <h4
+                    class="title-4 text-clr-text-dark!"
+                    >
+                    Whatsapp
+                </h4>
+                <p
+                    class="text-base-small z-5 text-clr-text-dark!"
+                    >
+                    Connectez votre application local au plateform Yann ndani pour suivre toutes les opérations de votre entreprise avec vos appareils. Ainsi continuer à faire les opérations hors-ligne et Yann synchronise dès que l'application et connectée à internet.
+                </p>
+            </div>
+            <div
+                class="flex flex-col items-center justify-center gap-main"
+                >
+                <i class="pi pi-whatsapp text-7xl! text-clr-text-dark!"></i>
+                <a
+                    href="https://wa.me/+243974306956?text={{message.whatsapp}}"
+                    target="_blank"
+                    class="button text-clr-text-dark bg-clr-success hover:bg-green-700 active:bg-clr-active active:text-clr-text-dark border-transparent!  hover:scale-110 active:scale-90 transition-[ transform] ease-in"
+                    >
+                    Lancez la conversation
+                </a>
+            </div>
+        </div>
+    
+    
+        <div 
+            class="col-span-5 lg:col-span-3 min-h-[40vh] lg:min-h-[60vh] bg-clr-bg-section/10! backdrop-blur-sm!  border-clr-button-disable-dark/25! hover:border-clr-hover! card shadow-sm! relative flex flex-col gap-main cubicTransition"
+            >
+            <div
+                class="w-full flex items-center gap-sm"
+                >
+                <span
+                    class="card card-icon shadow-none! w-12 h-12 bg-clr-active-transparent! border! border-clr-button-disable-dark/25!"
+                    >
+                    <lucide-icon
+                        [img]="icons.media"
+                    ></lucide-icon>
+                </span>
+                <h4
+                    class="text-base-large text-clr-text-dark!"
+                    >
+                    Réseaux sociaux
+                </h4>
+            </div>
+            <div
+                class="flex flex-col gap-main"
+                >
+                <h4
+                    class="title-4 text-clr-text-dark!"
+                    >
+                    Suivez-nous sur nos réseaux
+                </h4>
+                <p
+                    class="text-base-small z-5 text-clr-text-dark!"
+                    >
+                    Connectez votre application local au plateform Yann ndani pour suivre toutes les opérations de votre entreprise avec vos appareils. Ainsi continuer à faire les opérations hors-ligne et Yann synchronise dès que l'application et connectée à internet.
+                </p>
+            </div>
+            <div
+                class="flex gap-main"
+                >
+                @for(media of mediaLink; track $index){
+                    <a 
+                        [href]="media.link"
+                        target="_blank"
+                        pTooltip="{{media.name}}"
+                        tooltipPosition="bottom"
+                        class="card card-icon border! border-transparent! shadow-none! {{media.mediaClass}}"
+                        >
+                        <i class="{{media.icon}} text-2xl!"></i>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</section>

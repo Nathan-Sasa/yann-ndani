@@ -18,6 +18,7 @@
     --input-height-sm: 40px;
     --input-height-md: 40px;
     --input-height-lg: 36px;
+    --input-textarea: 108px;
 
     --button-height: 20px;
     --button-height-sm: 28px;
@@ -210,7 +211,7 @@ body{
 }
 
 aside {
-    color: #bdcfd20a
+    color: rgb(0, 105, 137)
     /* color: var(--color-gray-500) */
 }
 
@@ -609,6 +610,24 @@ aside {
     }
 }
 
+.button.cta{
+    &:disabled{
+        /* color: var(--color-clr-button); */
+        background: var(--color-clr-button-disable);
+        border-color: transparent;
+        color: var(--color-clr-text-disable);
+        cursor: default;
+    }
+}
+.button.disable{
+    /* color: var(--color-clr-button); */
+    background: var(--color-clr-button-disable);
+    border-color: transparent;
+    color: var(--color-clr-text-disable);
+    cursor: default;
+}
+
+
 /* input ============================ */
 /* ================================ */
 .label-input {
@@ -660,6 +679,10 @@ aside {
     }
 }
 
+.label-input.textarea {
+    height: var(--input-textarea);
+}
+
 .label-input.file{
     border-style: dashed !important;
 }
@@ -677,12 +700,20 @@ aside {
         color: var(--color-clr-text-dark)
     }
 
+    &:focus{
+        border-color: var(--color-clr-hover);
+    }
+
     @media (width >= 20rem /* sm */) {
         border-radius: var(--radius-sm);
     }
     @media (width >= 40rem /* 640px  md*/) {
         border-radius: var(--radius-sm);
     }
+}
+
+.label-input .input-text {
+    padding-block: var(--spacing-sm);
 }
 
 .label-input .label-1{
@@ -696,6 +727,13 @@ aside {
     &:where(.dark, .dark *){
         color: var(--color-clr-text-dark);
     }
+}
+.label-input.textarea .label-1 {
+    top: -15%
+}
+
+.label-input.primary .label-1{
+    color: var(--color-clr-text-dark);
 }
 .input-text:focus ~ .label-1,
 .input-text:valid ~ .label-1 {
@@ -714,18 +752,29 @@ aside {
     cursor: text;
     display: flex;
 }
+/* .label-input.primary .label-2{
+    color: var(--color-clr-text-dark);
+} */
+
 .input-text:focus ~ .label-2,
 .input-text:valid ~ .label-2 {
-    top: -5%;
+    top: -30%;
     left: 2%;
     height: fit-content;
     content: '';
 }
 
+.label-input.textarea .label-2{
+    top: 25%;
+}
+.input-text.textarea:focus ~ .label-2,
+.input-text.textarea:valid ~ .label-2 {
+    top: -40%;
+    left: 1%;
+}
+
 /* ==================== */
 /* label after ============= */
-
-
 .label-input .label-2::after{
     position: absolute;
     content: '';
@@ -744,15 +793,45 @@ html.dark .label-input .label-2::after {
     color: var(--color-clr-text-secondary);
 }
 
-/* colors label on stat*/
+.label-input.primary .label-2::after {
+    color: color-mix(in oklab, var(--color-clr-text-dark) 40%, transparent);
+}
+html.dark .label-input.primary .label-2::after {
+    color: color-mix(in oklab, var(--color-clr-text-dark) 40%, transparent);
+}
+
+.label-input.textarea .label-2::after {
+    top: 25%;
+}
+
+/* =================== */
+/* colors label on state ===== */
 .input-text:focus ~ .label-2::after,
 .input-text:valid ~ .label-2::after{
     content: '';
     background: var(--color-clr-bg-page);
+    border-radius: var(--spacing-xs);
 }
 html.dark .input-text:focus ~ .label-2::after,
 html.dark .input-text:valid ~ .label-2::after {
     background: var(--color-clr-bg-page-dark);
+}
+
+.input-text.textarea:focus ~ .label-2::after,
+.input-text.textarea:valid ~ .label-2::after {
+    top: 250%;
+}
+
+.input-text.primary:focus ~.label-2::after,
+.input-text.primary:valid ~ .label-2::after {
+    background: var(--color-clr-primary);
+    color: var(--color-clr-text-dark);
+    padding: var(--spacing-md) var(--spacing-sm);
+}
+html.dark .input-text.primary:focus ~ .label-2::after,
+html.dark .input-text.primary:valid ~ .label-2::after {
+    background: var(--color-clr-primary);
+    color: var(--color-clr-text-dark);
 }
 
 .input-text:focus ~ .label-2::after,
@@ -763,8 +842,8 @@ html.dark .input-text:focus ~ .label-2::after {
 html.dark .input-text:user-valid ~ .label-2::after {
     color: var(--color-clr-success);
 }
-.input-text:user-invalid ~ .label-2::after,
-html.dark .input-text:user-invalid ~ .label-2::after
+.input-text:user-invalid ~ .label-1::after,
+html.dark .input-text:user-invalid ~ .label-1::after
 {
     color: var(--color-clr-error);
 }
@@ -788,6 +867,42 @@ html.dark .input-text:user-invalid ~ .label-2::after
 .input-text:focus ~ .label-2.firstName::after,
 .input-text:valid ~ .label-2.firstName::after {
     content: 'Post nom' !important;
+}
+
+/* full name ==== */
+.label-2.fullName::after{
+    content: 'ex. Nathan Sasa' !important;
+}
+.input-text:focus ~ .label-2.fullName::after,
+.input-text:valid ~ .label-2.fullName::after {
+    content: 'Nom complet' !important;
+}
+
+/* profession ==== */
+.label-2.profession::after{
+    content: 'ex. CEO Yann ndani' !important;
+}
+.input-text:focus ~ .label-2.profession::after,
+.input-text:valid ~ .label-2.profession::after {
+    content: 'Profession' !important;
+}
+
+/* message ==== */
+.label-2.message::after{
+    content: 'ex. Bonjour ! Je recontre un problème pour lier mon application en local avec la plateforme en ligne.' !important;
+}
+.input-text:focus ~ .label-2.message::after,
+.input-text:valid ~ .label-2.message::after {
+    content: 'Message' !important;
+}
+
+/* ratingContent ==== */
+.label-2.ratingContent::after{
+    content: 'ex. Je suis très content l\'outil Yann ndani, ça me facilite beaucoup la vie.' !important;
+}
+.input-text:focus ~ .label-2.ratingContent::after,
+.input-text:valid ~ .label-2.ratingContent::after {
+    content: 'Message' !important;
 }
 
 /* password ===== */
@@ -872,12 +987,11 @@ html.dark .input-text:user-invalid ~ .label-2::after
     justify-content: center;
     position: relative;
 
-    /* border: var(--border-width) solid transparent; */
-    border: none;
+    border: 1px solid transparent;
     border-radius: var(--radius-xs);
     background: color-mix(in oklab, var(--color-clr-primary) 10%, transparent);
     color: var(--color-clr-hover);
-    cursor: pointer;
+    cursor: default;
     
     &:where(.dark, .dark *){
         border-color: var(--color-clr-border-dark);
@@ -901,6 +1015,60 @@ html.dark .input-text:user-invalid ~ .label-2::after
         width: 48px;
         border-radius: var(--radius-md);
     }
+}
+.card-icon.icon-small {
+    height: 20px;
+    width: 20;
+
+    @media (width >= 20rem /* sm */) {
+        height: 32px;
+        width: 32px;
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        height: 36px;
+        width: 36px;
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        height: 40px;
+        width: 40px;
+        border-radius: var(--radius-md);
+    }
+}
+
+.card-icon.icon-theme {
+    height: 20px;
+    width: 20;
+    cursor: pointer;
+    color: var(--color-clr-text);
+    background: var(--color-clr-button-disable);
+    
+    &:where(.dark, .dark *){
+        color: var(--color-clr-text-dark);
+        background: var(--color-clr-button-disable-dark);
+    }
+
+    @media (width >= 20rem /* sm */) {
+        height: 32px;
+        width: 32px;
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        height: 36px;
+        width: 36px;
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        height: 40px;
+        width: 40px;
+        border-radius: var(--radius-md);
+    }
+}
+.card-icon.icon-theme.themeActive {
+    background: color-mix(in oklab, var(--color-clr-primary) 10%, transparent);
+    color: var(--color-clr-hover);
+    border-color: var(--color-clr-active);
 }
 
 .card-avatar {
@@ -1159,7 +1327,7 @@ html.dark .input-text:user-invalid ~ .label-2::after
 
 /* transition */
 .cubicTransition{
-    transition:  .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition:  .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
  
@@ -1168,7 +1336,6 @@ html.dark .input-text:user-invalid ~ .label-2::after
 /* ===================================== */
 /* prime ng component ====================== */
 /* ===================================== */
-
 .p-button {
     display: inline-flex;
     cursor: pointer;
@@ -1193,7 +1360,7 @@ html.dark .input-text:user-invalid ~ .label-2::after
         background: var(--color-clr-button-hover) !important;
     }
     &:where(.dark, .dark *) {
-        color: var(--color-clr-text) !important;
+        color: var(--color-clr-text-dark) !important;
     }
     &:active {
         background: var(--color-clr-button-active) !important;
@@ -1212,7 +1379,7 @@ html.dark .input-text:user-invalid ~ .label-2::after
     }
 }
 
-/* oraginization chart ======= */
+/* pi-organization chart ======= */
 /* ==================== */
 
 /* button =============== */
@@ -1236,14 +1403,14 @@ html.dark .input-text:user-invalid ~ .label-2::after
     align-items: center;
     outline-color: transparent;
     transition: background var(--p-organizationchart-transition-duration),color var(--p-organizationchart-transition-duration),border-color var(--p-organizationchart-transition-duration),outline-color var(--p-organizationchart-transition-duration),box-shadow var(--p-organizationchart-transition-duration);
-
+    
     &:where(.dark, .dark *){
         border: 1px solid var(--color-clr-border-dark) !important;
     }
 }
 
-/* connector =============*/
 
+/* pi-connector =============*/
 /* line top left start */
 .p-organizationchart-connectors :nth-child(1 of .p-organizationchart-connector-right) {
     border-start-start-radius: var(--p-organizationchart-connector-border-radius);
@@ -1269,7 +1436,7 @@ html.dark .input-text:user-invalid ~ .label-2::after
     }
 }
 
-/* down */
+/* pi-down */
 .p-organizationchart-connector-down {
     margin: 0 auto;
     height: var(--p-organizationchart-connector-height);
@@ -1280,4 +1447,29 @@ html.dark .input-text:user-invalid ~ .label-2::after
         background: var(--color-clr-border-dark) !important;
 
     }
+}
+
+/* pi-dialog ========== */
+/* ================= */
+.p-dialog {
+    max-height: 90%;
+    transform: scale(1);
+    border-radius: var(--p-dialog-border-radius);
+    box-shadow: var(--p-dialog-shadow);
+    background: var(--color-clr-bg-page) !important;
+    border: 1px solid var(--color-clr-border) !important;
+    color: var(--color-clr-text) !important;
+    
+    &:where(.dark, .dark *){
+        background: var(--color-clr-bg-page-dark) !important;
+        border: 1px solid var(--color-clr-border-dark) !important;
+        color: var(--color-clr-text-dark) !important;
+
+    }
+}
+
+/* pi-rating ========= */
+/* =============== */
+.p-rating-option-active .p-rating-icon {
+    color: var(--p-rating-icon-active-color);
 }

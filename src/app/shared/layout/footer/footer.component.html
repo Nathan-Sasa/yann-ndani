@@ -1,0 +1,198 @@
+<section
+    class="w-full flex flex-col gap-main gap-y-section-y pt-section-y p-main bg-clr-bg-section dark:bg-clr-bg-section-dark relative z-20"
+    >
+    <div
+        class="w-full flex items-center gap-main"
+        >
+        <span
+            class="card-avatar avatar-md"
+            >
+            <img 
+                [src]="app.logo"
+                [alt]="app.name"
+                class=""
+            >
+        </span>
+        <h2
+            class="title-3">
+            {{app.name}}
+        </h2>
+    </div>
+
+    <div
+        class="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative"
+        >
+        <ul
+            class="flex flex-col gap-md items-start justify-start *:flex *:items-center *:gap-sm">
+            <li>
+                <h2
+                    class="text-base-large font-semibold!">
+                    Coordonnées
+                </h2>
+            </li>
+            <li>
+                <a 
+                    href="tel:{{coordonnees.phoneNumber}}"
+                    class="flex items-center gap-sm hover:text-clr-hover cubicTransition"
+                    >
+                    <span
+                        class="card-icon icon-small cursor-pointer!"
+                        >
+                        <lucide-icon 
+                            [img]="icons.phone"
+                        ></lucide-icon>
+                    </span>
+                    {{coordonnees.phoneNumber}}
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="mailto:{{coordonnees.addressMail}}?subject=Demande%20d'informations%20-%20bing'L%20center&body={{message.mail}}"
+                    class="flex items-center gap-sm hover:text-clr-hover  cubicTransition"
+                    >
+                    <span
+                        class="card-icon icon-small cursor-pointer!"
+                        >
+                        <lucide-icon 
+                            [img]="icons.mail"
+                        ></lucide-icon>
+                    </span>
+                    {{coordonnees.addressMail}}
+                </a>
+            </li>
+            <li
+                class="flex items-center gap-sm"    
+                >
+                <span
+                    class="card-icon icon-small cursor-pointer!"
+                    >
+                    <lucide-icon 
+                        [img]="icons.location"
+                    ></lucide-icon>
+                </span>
+                189 Av. Plazza, Q/. Plazza, C/. N'sele.
+            </li>
+        </ul>
+
+        <ul
+            class="flex flex-col gap-md items-start justify-start"
+            >
+            <li
+                class="text-base-large font-semibold!"
+                >
+                Liens rapides
+            </li>
+            <li
+                [routerLink]="['/home']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial w-full! hover:bg-clr-button-ghost! justify-start!"
+                >
+                Acceuil
+            </li>
+            <li
+                [routerLink]="['/services', 'slug']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial w-full! hover:bg-clr-button-ghost! justify-start!"
+                >
+                fonctionnalités
+            </li>
+            <li
+                [routerLink]="['/services', 'slug']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial w-full! hover:bg-clr-button-ghost! justify-start!"
+                >
+                Faq
+            </li>
+            <li
+                [routerLink]="['/services', 'slug']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial w-full! hover:bg-clr-button-ghost! justify-start!"
+                >
+                Service 1
+            </li>
+        </ul>
+
+        <ul
+            class="flex flex-col gap-md items-start justify-start"
+            >
+            <li
+                class="text-base-large font-semibold!"
+                >
+                Informations
+            </li>
+            <li
+                [routerLink]="['/police']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial w-full! hover:bg-clr-button-ghost! justify-start!"
+                >
+                Police
+            </li>
+            <li
+                [routerLink]="['/confidentiality']"
+                [routerLinkActive]="['bg-clr-button-ghost!','text-clr-active!']"
+                class="button tertial w-full! hover:bg-clr-button-ghost! justify-start!"
+                >
+                Politiques & Confidentialités
+            </li>
+        </ul>
+
+        <ul
+            class="flex flex-col gap-md items-start justify-start"
+            >
+            <li
+                class="text-base-large font-semibold!"
+                >
+                Thèmes
+            </li>
+            <li>
+                <app-theme></app-theme>
+            </li>
+        </ul>
+
+        <ul
+            class="flex flex-col gap-4 items-start justify-start"
+            >
+            <li
+                class="text-base-large font-semibold!"
+                >
+                NewsLetter
+            </li>
+            <li
+                class="text-clr-text  dark:text-clr-text-dark"
+                >
+                Inscrivez-vous à notre newsletter pour recevoir les dernières actualités, offres et nouveautés directement dans votre boîte mail
+            </li>
+            <form
+                class="w-full relative"
+                >
+                <input 
+                    type="text"
+                    placeholder="votre adresse mail"
+                    name="newsletter"
+                    class="h-10 w-7/10 border border-gray-300 dark:border-gray-700 placeholder:text-clr-text-secondary dark:placeholder:text-clr-text-secondary-dark px-4 outline-0 focus:border-clr-hover cubicTransition"
+                >
+                <button
+                    class="w-3/10 bg-clr-primary hover:bg-clr-hover text-clr-text-dark cursor-pointer h-10 px-3 cubicTransition"
+                >s'inscrire</button>
+            </form>
+            <li
+                class="flex items-center gap-8">
+                @for(media of mediaLink; track $index){
+                    <a 
+                        [href]="media.link"
+                        target="_blank"
+                        class="mr-2">
+                        <i class="{{media.icon}} text-clr-primary hover:text-clr-hover cubicTransition text-base-large-lg! font-normal!"></i>
+                    </a>
+                }
+            </li>
+        </ul>
+    </div>
+
+    <div
+        class="w-full flex items-center justify-center gap-xs text-clr-text-secondary dark:text-clr-text-secondary-dark"
+        >
+        <p>Tous droits réservés</p>
+        <p>&copy;2026</p>
+    </div>
+</section>

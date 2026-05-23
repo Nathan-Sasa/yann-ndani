@@ -1,0 +1,110 @@
+<p-toast />
+<div class="card bg-transparent! border-transparent! shadow-none! p-0! flex justify-center">
+    <p-button 
+        (click)="showDialog()" 
+        label="laissez un commentaire" 
+    />
+
+    <p-dialog 
+        [(visible)]="visible" 
+        [modal]="true" 
+        [style]="{ width: '25rem' }"
+        class="bg-clr-bg-page! dark:bg-clr-bg-card-dark!"
+        >
+        <ng-template #header>
+            <div class="inline-flex items-center justify-center gap-2">
+                <p-avatar image="assets/images/development/profile/nathan-red.PNG" shape="circle" />
+                <span class="font-bold whitespace-nowrap">Nathan Sasa</span>
+            </div>
+        </ng-template>
+
+        <span class="text-surface-500 dark:text-surface-400 block mb-8">Que pensez-vous notre outil ?</span>
+        <form 
+            action=""
+            [formGroup]="ratingForm"
+            class="flex flex-col gap-sm relative w-full"
+            >
+            <div class="flex items-center gap-4 mb-4 relative!">
+                <label 
+                    for="poste"
+                    class="label-input w-full!"
+                    >
+                    <input 
+                        type="text"
+                        id="poste"
+                        formControlName="poste"
+                        required
+                        class="input-text w-full!"
+                    >
+                    <span
+                        class="label-1"
+                        >
+                        Profession
+                    </span>
+                    <span 
+                        class="label-2 profession">
+                    </span>
+                </label>
+            </div>
+            <div class="flex items-center gap-4 mb-2 relative!">
+                <label 
+                    for="ratingContent"
+                    class="label-input textarea w-full!"
+                    >
+                    <textarea 
+                        name="content"
+                        id="ratingContent"
+                        formControlName="ratingContent"
+                        required
+                        class="input-text textarea w-full! resize-none"
+                    ></textarea>
+                    <span
+                        class="label-1"
+                        >
+                        Message
+                    </span>
+                    <span 
+                        class="label-2 ratingContent">
+                    </span>
+                </label>
+            </div>
+            <div class="flex items-center gap-4 mb-2 relative!">
+                <span
+                    class="text-base-md font-semibold"
+                    >
+                    Note :
+                </span>
+                <p-rating
+                    formControlName="ratingNote"
+                    required 
+                    name="ratingNote" 
+                    [invalid]="isInvalid('ratingValue')"
+                />
+                @if (isInvalid('ratingValue')) {
+                    <p-message 
+                        severity="error" 
+                        size="small" 
+                        variant="simple"
+                        >
+                        Svp combien d'étoiles nous donnez-vous ?.
+                    </p-message>
+                }
+            </div>
+        </form>
+        <ng-template #footer>
+            <button
+                (click)="visible = false"
+                class="button secondary"
+                >
+                Retour
+            </button>
+            <button
+                (click)="ratingSubmit()"
+                [disabled]="ratingForm.invalid"
+                class="button primary"
+                >
+                Envoyez
+            </button>
+        </ng-template>
+    </p-dialog>
+</div>

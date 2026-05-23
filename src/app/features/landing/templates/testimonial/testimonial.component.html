@@ -6,45 +6,111 @@
     ></app-sectionHeader>
 
     <div
-        class="w-full flex justify-center gap-main"
+        class="w-full h-[50vh] md:h-[30vh] lg:h-[50vh] max-h-96 relative flex items-center justify-start overflow-hidden"
         >
-        @for(testimonial of testimonials; track $index){
-            <div
-                class="card"
-                >
+        <span class="w-2 h-full mask-r-from-50% bg-clr-bg-page dark:bg-clr-bg-page-dark absolute top-1/2 -left-xs -translate-y-1/2 z-5"></span>
+        <span class="w-2 h-full mask-l-from-50% bg-clr-bg-page dark:bg-clr-bg-page-dark absolute top-1/2 -right-xs -translate-y-1/2 z-5"></span>
+        <div
+            #marqueeContent 
+            class="marquee-wrapper-col flex items-start gap-main absolute p-sm overflow-hidden w-fit top-1/2 -translate-y-1/2"
+            >
+            @for(testimonial of testimonials; track $index){
                 <div
-                    class="flex items-start gap-sm"
+                    class="commentCard card min-w-72  md:min-w-106 min-h-auto h-auto max-h-[48vh] flex flex-col gap-main"
                     >
-                    <span
-                        class="card-avatar"
+                    <div
+                        class="flex items-start gap-sm"
                         >
-                        <img 
-                            [src]="testimonial.avatar" 
-                            [alt]="testimonial.name"
-                            class=""
-                        >
-                    </span>
-                    <span
-                        class="flex flex-col gap-sm items-start"
-                        >
-                        <h4
-                            class="text-base-large"
+                        <span
+                            class="card-avatar cursor-default!"
                             >
-                            {{ testimonial.name }}
-                        </h4>
+                            <img 
+                                [src]="testimonial.avatar" 
+                                [alt]="testimonial.name"
+                                class=""
+                            >
+                        </span>
+                        <span
+                            class="flex flex-col gap-xs items-start"
+                            >
+                            <h4
+                                class="text-base-large"
+                                >
+                                {{ testimonial.name }}
+                            </h4>
+                            <p
+                                class="text-base-small secondary"
+                                >
+                                {{ testimonial.post}}
+                            </p>
+                        </span>
+                    </div>
+                    <div
+                        class="flex flex-col gap-sm"
+                        >
                         <p
                             class="text-base-small"
                             >
-                            {{ testimonial.post}}
+                            {{testimonial.text}}
                         </p>
-                    </span>
+                        <p-rating [(ngModel)]="testimonial.rating" [readonly]="true" />
+                    </div>
                 </div>
-                <div>
-                    <p>
-                        {{testimonial.text}}
-                    </p>
+            }
+            @for(testimonial of testimonials; track $index){
+                <div
+                    class="commentCard card min-w-72  md:min-w-106 min-h-auto h-auto max-h-[48vh] flex flex-col gap-main"
+                    >
+                    <div
+                        class="flex items-start gap-sm"
+                        >
+                        <span
+                            class="card-avatar cursor-default!"
+                            >
+                            <img 
+                                [src]="testimonial.avatar" 
+                                [alt]="testimonial.name"
+                                class=""
+                            >
+                        </span>
+                        <span
+                            class="flex flex-col gap-xs items-start"
+                            >
+                            <h4
+                                class="text-base-large secondary"
+                                >
+                                {{ testimonial.name }}
+                            </h4>
+                            <p
+                                class="text-base-small"
+                                >
+                                {{ testimonial.post}}
+                            </p>
+                        </span>
+                    </div>
+                    <div
+                        class="flex flex-col gap-sm"
+                        >
+                        <p
+                            class="text-base-small"
+                            >
+                            {{testimonial.text}}
+                        </p>
+                        <p-rating [(ngModel)]="testimonial.rating" [readonly]="true" />
+                    </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+    </div>
+
+    <div
+        class="w-full flex flex-col items-center justify-center gap-main relative text-center"
+        >
+        <h5
+            class="text-base-large font-semibold!"
+            >
+            Avez-vous un commentaire pour nous ? Nous sommes à l'écoute.
+        </h5>
+        <app-rating></app-rating>
     </div>
 </section>

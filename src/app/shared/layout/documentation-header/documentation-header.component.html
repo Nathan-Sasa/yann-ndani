@@ -1,6 +1,5 @@
 <header
-    class="w-full @max-xs:h-[15vh] h-[12vh] md:h-[10vh] fixed top-0 left-0 flex items-center justify-between p-main bg-transparent shadow-none z-10 cubicTransition || border-b! border-transparent"
-    [class.-translate-y-2/1]="!navBarVisible"
+    class="w-full @max-xs:h-[15vh] h-[12vh] md:h-[10vh] fixed top-0 left-0 flex items-center justify-between p-main bg-clr-bg-page/80 dark:bg-clr-bg-page-dark/80 backdrop-blur-sm shadow-xs z-10 cubicTransition || border-line-b"
     >
     <a
         href="/"
@@ -14,13 +13,13 @@
         </span>
         <h1
             id="appName"
-            class="title-3 transition text-clr-text-dark!"
+            class="title-3"
             >
             {{app.name}}
         </h1>
     </a>
 
-    <nav
+    <div
         class="flex-center gap-x-16 max-lg:hidden!"
         >
         <ul
@@ -85,7 +84,7 @@
             </li>
             <!-- <app-theme></app-theme> -->
         </ul>
-    </nav>
+    </div>
     <p-button (click)="isMenuOpen = true" icon="pi pi-bars" class="2xl:scale-150! lg:hidden!" />
 </header>
 

@@ -1,0 +1,47 @@
+<section
+    class="w-full min-h-screen flex flex-col p-main py-section-y gap-y-section-y relative"
+    >
+    <app-sectionHeader [texts]="headerTitles"></app-sectionHeader>
+
+    <div
+        class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-sm md:gap-md"
+        >
+        <div
+            class="col-span-1 md:col-span-2 lg:col-span-5 card pr-0! pb-0! relative overflow-hidden"
+            >
+            <app-grid-features-chart
+                class="w-full"
+            ></app-grid-features-chart>
+        </div>
+
+        <div
+            class="col-span-1 md:col-span-1 lg:col-span-4 card pr-0! pb-0! relative overflow-hidden"
+            >
+            <app-grid-features-statistic
+                class="w-full"
+            ></app-grid-features-statistic>
+        </div>
+        
+        <div
+            class="col-span-1 md:col-span-1 lg:col-span-3 card pb-0! relative overflow-hidden"
+            >
+            <app-grid-features-employee
+                class="w-full"
+            ></app-grid-features-employee>
+        </div>
+
+        <div
+            class="col-span-1 md:col-span-1 lg:col-span-3 card p-0! bg-transparent! border-none!  relative overflow-hidden"
+            >
+            <app-grid-features-audit
+                class="w-full relative"
+            ></app-grid-features-audit>
+        </div>
+
+        <div
+            class="col-span-1 md:col-span-1 lg:col-span-3 card"
+            >
+
+        </div>
+    </div>
+</section>
