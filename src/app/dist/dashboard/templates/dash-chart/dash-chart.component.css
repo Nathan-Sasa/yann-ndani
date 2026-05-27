@@ -1,0 +1,6 @@
+
+.dash-chart{
+    display: block; /* Indispensable pour que AG Charts lise correctement les dimensions */
+    width: 100%;
+    height: 100%;
+}

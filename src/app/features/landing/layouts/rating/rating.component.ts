@@ -9,6 +9,7 @@ import { Rating } from 'primeng/rating';
 import { Toast } from 'primeng/toast';
 import { Message } from 'primeng/message';
 import { MessageService } from 'primeng/api';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive'
 
 @Component({
 	selector: 'app-rating',
@@ -21,7 +22,8 @@ import { MessageService } from 'primeng/api';
     AvatarModule,
     Rating,
 	Message,
-	Toast
+	Toast,
+	EntryAnimDirective
 ],
 	templateUrl: './rating.component.html',
 	styleUrl: './rating.component.css',

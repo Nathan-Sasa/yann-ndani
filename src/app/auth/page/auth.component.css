@@ -1,0 +1,7 @@
+.background {
+    background: linear-gradient(rgba(0, 0, 0, 0.814), rgba(0, 105, 137, 0.572)),
+            url('../../../../public/assets/images/development/graphicsninja-chart-5061485.webp') center/cover no-repeat
+    ;
+    transition: background 0.5s ease-in-out;
+    background-position: right;
+}

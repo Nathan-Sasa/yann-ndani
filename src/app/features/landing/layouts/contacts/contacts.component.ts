@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
 import { LucideAngularModule, MailIcon, MessagesSquareIcon, TextCursorInputIcon, SendIcon, UsersIcon } from 'lucide-angular';
 import { Tooltip } from 'primeng/tooltip';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive';
 
 @Component({
 	selector: 'app-contacts',
@@ -12,7 +13,8 @@ import { Tooltip } from 'primeng/tooltip';
 		FormsModule,
 		LucideAngularModule,
 		CommonModule,
-		Tooltip
+		Tooltip,
+		EntryAnimDirective
 	],
 	templateUrl: './contacts.component.html',
 	styleUrl: './contacts.component.css',

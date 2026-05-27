@@ -5,7 +5,7 @@
         class="w-full lg:w-1/2 h-full flex flex-col gap-main md:gap-12 lg:gap-main relative"    
         >
         <span
-            class="flex items-center gap- text-base-small"
+            class="flex items-center gap- text-base-small rebond"
             >
             <p class="text-caption">Gestion</p>,
             <p class="text-caption ml-xs">Vente</p>,
@@ -14,24 +14,26 @@
             <p class="text-caption ml-xs">Comptabilité</p>
         </span>
         <h2
-            class="title-1 text-clr-text-dark! dark:text-clr-text-dark!"
+            class="title-1 text-focus-in text-clr-text-dark! dark:text-clr-text-dark!"
             >
             Tout ce qu'il vous faut pour prendre en main votre activicté commerciale.
             <!-- Réduisez les erreurs et les risques de vols sur vos opérations de vente et comptabilité. -->
         </h2>
 
         <p
-            class="text-base secondary"
+            appEntryAnim
+            [delay]="200"
+            class="text-base secondary opacity-0"
             >
             <!-- Yann ndani est un logiciel qui vous permet de gestionner, comptabiliser et à surveiller la finance et trésorérie de votre entreprise. En réduisant les riques de vole. Facile à prendre en main  -->
             Augmentez votre chiffre d'affaire, que vous soyez seul(e) ou avec des personnels.  Réduisez les erreurs et les risques de vols sur vos opérations de vente et comptabilité. Travaillez avec des experts comptable. Et ayez le contrôl total sur votre activité.
         </p>
 
         <div
-            class="flex flex-col md:flex-row gap-main mt-main"
+            class="flex flex-col md:flex-row gap-main mt-main rebond"
             >
             <a
-                href=""
+                [routerLink]="['/dashboard']"
                 class="button primary"
                 >
                 Téléchargez

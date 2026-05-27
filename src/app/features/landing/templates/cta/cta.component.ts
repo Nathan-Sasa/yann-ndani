@@ -1,10 +1,14 @@
 import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ContactsComponent } from '../../layouts/contacts/contacts.component';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive';
+import { RouterModule } from '@angular/router';
 
 @Component({
 	selector: 'app-cta',
 	imports: [
-		ContactsComponent
+		RouterModule,
+		ContactsComponent,
+		EntryAnimDirective
 	],
 	templateUrl: './cta.component.html',
 	styleUrl: './cta.component.css',

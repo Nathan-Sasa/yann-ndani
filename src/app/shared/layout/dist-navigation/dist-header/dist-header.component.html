@@ -1,0 +1,451 @@
+<header
+    class="w-ful min-h-14 h-[10vh] relative cubicTransition flex justify-between items-center px-4 border-b border-line-color"
+    [ngClass]="{
+        'active': headerTrack === 1
+    }"
+    >
+    <div
+        class="dateContainer flex items-center gap-4"
+        >
+        <!-- <button
+            appEntryAnim
+            [delay]="300"
+            [threshold]="0.5"
+            [translateY]="25"
+            (click)="toggleNav()"
+            class="text-clr-text dark:text-clr-text-dark border border-line-color rounded-sm p-1 flex lg:hidden opacity-0"
+            >
+            <lucide-icon
+                class=""
+                [img]="icons.list"
+            ></lucide-icon>
+        </button> -->
+        <p-button 
+            appEntryAnim
+            [delay]="300"
+            [threshold]="0.5"
+            [translateY]="25"
+            (click)="toggleNav()" 
+            icon="pi pi-bars" 
+            class="2xl:scale-150! lg:hidden! opacity-0" 
+        />
+        <app-date></app-date>
+    </div>
+    <div
+        class="flex gap-6 items-center relative"
+        >
+        <div
+            appEntryAnim
+            [delay]="400"
+            [threshold]="0.5"
+            [translateY]="50"
+            class="hidden lg:flex items-cener gap-sm text-base-small text-clr-text-disable! dark:text-clr-text-disable-dark! secondary opacity-0"
+            >
+            <p>
+                dernière mise à jour le
+            </p>
+            <p>03/04/2026 19:00:50</p>
+        </div>
+        <!-- @if((online$ | async) === false){
+            <span class="hidden md:flex p-1 px-2 rounded-2xl border border-orange-600 text-sm text-orange-600 bg-orange-600/20 opacity-60">
+                Déconnecté
+            </span>
+        }
+        @if((online$ | async) === true){
+            <span class="hidden md:flex p-1 px-2 rounded-2xl border border-green-600 text-sm text-green-600 bg-green-600/20 opacity-60">
+                Connecté
+            </span>
+        } -->
+        <button 
+            appEntryAnim
+            [delay]="500"
+            [threshold]="0.5"
+            [translateY]="50"
+            class="opacity-0">
+            <lucide-icon
+                [img]="icons.notification"
+            ></lucide-icon>
+        </button>
+        <button
+            appEntryAnim
+            [delay]="600"
+            [threshold]="0.5"
+            [translateY]="25"
+            (click)="handleDropdown()"
+            class="flex items-center gap-2 cursor-pointer group opacity-0 z-21"
+            >
+            <div
+                class="flex items-center gap-sm"
+                >
+                <span
+                    class="flex items-center gap-2 cursor-pointer"
+                    >
+                    <span
+                        class="card-avatar avatar-sm"
+                        >
+                        <img 
+                            [src]="avatar()" 
+                            alt=""
+                            class=""
+                        >
+                    </span>
+                    <span
+                        class="hidden md:flex flex-col gap-xs text-start"
+                        >
+                        <p class="text-base secondary  group-hover:text-clr-button-active! easeTransition">
+                            bing'L center
+                        </p>
+                        <p
+                            class="text-base-small secondary text-clr-text-disable! dark:text-clr-text-disable-dark!"
+                            >
+                            Créateur
+                        </p>
+                    </span>
+                </span>
+                <lucide-icon
+                    [img]="sessionDropdown ? icons.chevronRight : icons.chevronDown"
+                    class="scale-110 group-hover:text-clr-button-active easeTransition"
+                ></lucide-icon>
+            </div>
+        </button>
+
+        @if(sessionDropdown){
+            <div
+                (click)="sessionDropdown = false"
+                class="inset-0 top-0 fixed z-20 backdrop-blur-xs"
+                >
+                <div
+                    class="dropdownSession fixed top-[5vh] right-4 z-14 min-h-16 w-72 card backdrop-blur-sm cubicTransition rounded-xl md:rounded-3xl flex flex-col p-4 py-4 gap-4 bg-clr-bg-page dark:bg-clr-bg-page-dark"
+                    [ngClass]="{
+                        'top-[9vh]': sessionDropdown,
+                        'cubicTransition': sessionDropdown
+                    }"
+                    >
+                    <button
+                        class="flex items-center gap-2 mb-xl cursor-pointer"
+                        >
+                        <span
+                            class="card-avatar avatar-xs"
+                            >
+                            <img 
+                                [src]="avatar()" 
+                                alt=""
+                                class=""
+                            >
+                        </span>
+                        <span
+                            class="flex flex-col gap-xs text-start"
+                            >
+                            <p class="text-base secondary">
+                                bing'L center
+                            </p>
+                            <p
+                                class="text-base-small secondary"
+                                >
+                                Créateur
+                            </p>
+                        </span>
+                    </button>
+                    <app-theme></app-theme>
+                </div>
+            </div>
+        }
+    </div>
+</header>
+
+<!-- =============================================================================== -->
+<!-- volet de navigation menu mobile -->
+<!-- =============================================================================== -->
+<!-- <p-drawer [header]="app().name" [(visible)]="navOpen" position="left"></p-drawer> -->
+
+<p-drawer #drawerRef [(visible)]="navOpen">
+    <ng-template #headless>
+        <div class="flex flex-col h-full relative">
+            <div class="flex items-center justify-between px-6 py-sm border-b border-0 border-surface shrink-0">
+                <span 
+                    appEntryAnim
+                    [delay]="50"
+                    [threshold]="0.5"
+                    [translateY]="15"
+                    class="inline-flex items-center gap-2 opacity-0">
+                    <span
+                        class="card-avatar avatar-md"
+                        >
+                        <img
+                            [src]="app().logo"
+                            [alt]="app().name"
+                        >
+                    </span>
+                    <span class="font-semibold text-2xl text-primary">{{app().name}}</span>
+                </span>
+                <span>
+                    <p-button type="button" (click)="closeCallback($event)" icon="pi pi-times" rounded="true" outlined="true" styleClass="h-8 w-8"></p-button>
+                </span>
+            </div>
+            <div class="overflow-y-auto">
+                <ul
+                    class="w-full relative flex flex-col gap-sm mt-xl">
+                    <li
+                        appEntryAnim
+                        [delay]="100"
+                        [threshold]="0.5"
+                        [translateY]="15"
+                        class="flex w-full relative opacity-0"
+                        >
+                        <a
+                            [routerLink]="[routes.dashboard.route]"
+                            [routerLinkActive]="['bg-clr-active-transparent!', 'text-clr-active!', 'hover:bg-clr-active-transparent!', 'border-clr-primary/20!']"
+                            class="button tertial link w-full! flex! justify-start! items-center! mx-lg gap-sm *:transition *:duration-300!"
+                            >
+                            <lucide-icon 
+                                [img]="routes.dashboard.icon"
+                            ></lucide-icon>
+                            <span>
+                                {{routes.dashboard.title}}
+                            </span>
+                        </a>
+                    </li>
+
+                    <!-- <app-separator></app-separator> -->
+
+                    @for(route of routes.tables; track $index){
+                        <li
+                            appEntryAnim
+                            [delay]="100"
+                            [threshold]="0.5"
+                            [translateY]="15"
+                            class="flex w-full relative opacity-0"
+                            >
+                            <a
+                                [routerLink]="[route.route]"
+                                [routerLinkActive]="['bg-clr-active-transparent!',  'text-clr-active!', 'hover:bg-clr-active-transparent!', 'border-clr-primary/20!']"
+                                class="button tertial link w-full! flex! justify-start! items-center! mx-lg gap-sm *:transition *:duration-300! "
+                                >
+                                <lucide-icon 
+                                    [img]="route.icon"
+                                ></lucide-icon>
+                                <span>
+                                    {{route.title}}
+                                </span>
+                            </a>
+                        </li>
+                    }
+
+                    <app-separator></app-separator>
+                    
+                    @for(route of routes.account; track $index){
+                        <li
+                            appEntryAnim
+                            [delay]="100"
+                            [threshold]="0.5"
+                            [translateY]="15"
+                            class="flex w-full relative opacity-0"
+                            >
+                            <a
+                                [routerLink]="[route.route]"
+                                [routerLinkActive]="['bg-clr-active-transparent!',  'text-clr-active!', 'hover:bg-clr-active-transparent!', 'border-clr-primary/20!']"
+                                class="button tertial link w-full! flex! justify-start! items-center! mx-lg gap-sm *:transition *:duration-300!"
+                                >
+                                <lucide-icon 
+                                    [img]="route.icon"
+                                ></lucide-icon>
+                                <span>
+                                    {{route.title}}
+                                </span>
+                            </a>
+                        </li>
+                    }
+                    
+                    <app-separator></app-separator>
+
+                    @for(route of routes.invitation; track $index){
+                        <li
+                            appEntryAnim
+                            [delay]="100"
+                            [threshold]="0.5"
+                            [translateY]="15"
+                            class="flex w-full relative opacity-0"
+                            >
+                            <a
+                                [routerLink]="[route.route]"
+                                [routerLinkActive]="['bg-clr-active-transparent!',  'text-clr-active!', 'hover:bg-clr-active-transparent!', 'border-clr-primary/20!']"
+                                class="button tertial link w-full! flex! justify-start! items-center! mx-lg gap-sm *:transition *:duration-300!"
+                                >
+                                <lucide-icon 
+                                    [img]="route.icon"
+                                ></lucide-icon>
+                                <span>
+                                    {{route.title}}
+                                </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="mt-xs sticky min-[767px]:fixed bottom-0 left-0 w-full! bg-clr-bg-page dark:bg-clr-bg-page-dark">
+                <hr class="border-t border-0 border-surfac border-line-color w-full!" />
+                <a 
+                    appEntryAnim
+                    [delay]="200"
+                    [threshold]="0.5"
+                    [translateY]="15"
+                    [routerLink]="['/']"
+                    pRipple class="flex items-center cursor-pointer p-4 gap-2 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple opacity-0">
+                    <span
+                        class="card-avatar avatar-sm"
+                        >
+                        <img
+                            [src]="avatar()"
+                            [alt]=""
+                        >
+                    </span>
+                    <span class="font-bold">Nathan Sasa</span>
+                </a>
+                <!-- <li
+                    class="flex w-full relative"
+                    >
+                    <a
+                        appEntryAnim
+                        [delay]="100"
+                        [threshold]="0.5"
+                        [translateY]="15"
+                        [routerLink]="['/']"
+                        class="button tertial w-full! flex! justify-between! border! border-clr-button-ghost! hover:bg-clr-error! group opacity-0 mx-lg mb-sm"
+                        >
+                        <span class="text-base font-semibold! dark:text-clr-text-secondary-dark! group-hover:text-clr-text-dark! transition!">
+                            Quitter la session
+                        </span>
+                        <div
+                            class="card-icon bg-transparent! border-transparent! icon-small cursor-pointer!"
+                            >
+                            <lucide-icon
+                                [img]="icons.logout"
+                                class="text-clr-text dark:text-clr-text-secondary-dark group-hover:text-clr-text-dark! transition!"
+                            ></lucide-icon>
+                        </div>
+                    </a>
+                </li> -->
+            </div>
+        </div>
+    </ng-template>
+</p-drawer>
+<!-- <div class="card flex justify-center">
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =============================================================================== -->
+
+<!-- @if(navOpen){
+    <div class="flex lg:hidden dropLeftNav bg-clr-bg-page/80 dark:bg-clr-bg-page-dark/80 backdrop-blur-xs inset-0 fixed top-0 z-50">
+        <div
+            class="h-screen w-8/10 fixed top-0 bg-clr-bg dark:bg-clr-bg-dark z-12 "
+            >
+            <nav
+                class="h-screen w-full border-r-2 border-gray-200 dark:border-gray-700 px-4 py-4 cubicTransition flex flex-col  justify-between gap-4 relative"
+                >
+                <button
+                    class="cursor-pointer group flex absolute z-2 top-4 right-6 translate-x-1/2 p-1 border border-gray-300 dark:border-gray-700 rounded-sm cubicTransition buttonToggleNave"
+                    >
+                        <lucide-icon
+                            (click)="toggleNav()"
+                            [img]="icons.close"
+                            class="text-clr-text/60 group-hover:text-clr-text dark:text-clr-text-dark dark:group-hover:text-clr-text-white"
+                        ></lucide-icon>
+                </button>
+            
+                <div
+                    class="flex flex-col gap-12 w-full relative"
+                    >
+                    <div
+                        class="flex gap-4 items-center justify-start">
+                        <img 
+                            [src]="app().logo" 
+                            [alt]="app().name" 
+                            loading="lazy"
+                            class="h-10 rounded-lg cubicTransition imgApp"
+                        >
+                        <h2 class="text-clr-title dark:text-clr-title-dark text-mono">{{app().name}}</h2>
+                    </div>
+                
+                    <ul
+                        class="w-full relative flex flex-col gap-2">
+                        <li
+                            [routerLink]="['/work/dashboard']"
+                            [routerLinkActive]="['bg-clr-active/10', 'text-clr-active!', 'dark:text-clr-hover!', 'hover:text-clr-active', 'border!', 'border-gray-200!', 'dark:border-gray-700!']"
+                            class="flex items-center gap-2 w-full cubicTransition py-2 px-2 rounded-xl text-clr-text dark:text-clr-text-dark dark:hover:text-clr-text-white"
+                            >
+                            <lucide-icon [img]="icons.dash"></lucide-icon>
+                            <span>
+                                Dashboard
+                            </span>
+                        </li>
+                        <li
+                            [routerLink]="['/work/products']"
+                            [routerLinkActive]="['bg-clr-active/10', 'text-clr-active!', 'dark:text-clr-hover!', 'hover:text-clr-active', 'border!', 'border-gray-200!', 'dark:border-gray-700!']"
+                            class="flex items-center gap-2 w-full cubicTransition py-1.5 px-2 rounded-xl text-clr-text dark:text-clr-text-dark dark:hover:text-clr-text-white"
+                            >
+                            <lucide-icon [img]="icons.list"></lucide-icon>
+                            <span>
+                                Produits
+                            </span>
+                        </li>
+                        <li
+                            [routerLink]="['/work/dashboards']"
+                            [routerLinkActive]="['bg-clr-active/10', 'text-clr-active!', 'dark:text-clr-hover!', 'hover:text-clr-active', 'border!', 'border-gray-200!', 'dark:border-gray-700!']"
+                            class="flex items-center gap-2 w-full cubicTransition py-1.5 px-2 rounded-xl text-clr-text dark:text-clr-text-dark dark:hover:text-clr-text-white"
+                            >
+                            <lucide-icon [img]="icons.dash"></lucide-icon>
+                            <span>
+                                Ventes
+                            </span>
+                        </li>
+                    </ul>
+            
+                </div>
+            
+            
+                <ul
+                    class="flex flex-col gap-4 w-full relative ">
+                    <li
+                        class="w-full flex items-center gap-2 cubicTransition relative"
+                        >
+                        <img 
+                            src="" 
+                            alt=""
+                            class="bg-gra-500 h-10 w-10 rounded-full border border-gray-400 dark:border-gray-700"
+                        >
+                        <span class="userName line-clamp-1 text-clr-text dark:text-clr-text-dark">Nom utilisateur connecté</span>
+                        <div
+                            class="w-2 h-2 rounded-full bg-green-600 absolute right-2 top-1"
+                        ></div>
+                    </li>
+                    <li
+                        [routerLink]="['settings']"
+                        [routerLinkActive]="['']"
+                        class="flex items-center gap-2 w-full cubicTransition border-t pt-4 border-gray-300 dark:border-gray-800"
+                        >
+                        <lucide-icon
+                            [img]="icons.logout"
+                            class="text-orange-600"
+                        ></lucide-icon>
+                        <span class="text-clr-text dark:text-clr-text-dark">Déconnexion</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+} -->

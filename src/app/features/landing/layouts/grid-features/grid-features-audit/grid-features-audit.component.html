@@ -2,7 +2,11 @@
     class="w-full flex flex-col gap-md"
     >
     <div
-        class="w-full card flex flex-col gap-sm"
+        appEntryAnim
+        [delay]="500"
+        [threshold]="0.2"
+        [translateY]="15"
+        class="w-full card flex flex-col gap-sm opacity-0"
         >
         <span
             class="flex items-center gap-xs"
@@ -23,7 +27,6 @@
                     <img 
                         [src]="avatar.image"
                         [alt]="avatar.alt"
-    
                     />
                 </span>
             }
@@ -36,7 +39,11 @@
     </div>
 
     <div
-        class="w-full card flex flex-col gap-sm bg-clr-primary!"
+        appEntryAnim
+        [delay]="500"
+        [threshold]="0.2"
+        [translateY]="15"
+        class="w-full card flex flex-col gap-sm bg-clr-primary! opacity-0"
         >
         <span
             class="flex items-center gap-xs"

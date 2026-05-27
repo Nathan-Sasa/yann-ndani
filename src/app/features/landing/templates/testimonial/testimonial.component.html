@@ -104,10 +104,15 @@
     </div>
 
     <div
+        
         class="w-full flex flex-col items-center justify-center gap-main relative text-center"
         >
         <h5
-            class="text-base-large font-semibold!"
+            appEntryAnim
+            [delay]="500"
+            [threshold]="0.5"
+            [translateY]="15"
+            class="text-base-large font-semibold! opacity-0"
             >
             Avez-vous un commentaire pour nous ? Nous sommes à l'écoute.
         </h5>

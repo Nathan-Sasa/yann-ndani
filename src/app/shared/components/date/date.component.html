@@ -1,0 +1,13 @@
+<div
+    class="w-full"
+    >
+    <p
+        appEntryAnim
+        [delay]="400"
+        [threshold]="0.5"
+        [translateY]="50"
+        class="text-base-small secondary text-semibold tracking-wider hidden md:flex opacity-0"
+        >
+        {{ now | date:'EEEE dd MMMM yyyy | HH:mm' : 'fr-FR' | titlecase}}
+    </p>
+</div>

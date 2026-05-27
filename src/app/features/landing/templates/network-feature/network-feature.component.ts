@@ -3,6 +3,7 @@ import { SectionHeaderComponent } from '../../layouts/section-header/section-hea
 import { ConnectDeviceComponent } from './connect-device/connect-device.component';
 import { LucideAngularModule, MonitorSmartphoneIcon, SendIcon } from 'lucide-angular';
 import { OrganisationComponent } from '../../layouts/organisation/organisation.component';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive';
 
 @Component({
 	selector: 'app-network-feature',
@@ -10,7 +11,8 @@ import { OrganisationComponent } from '../../layouts/organisation/organisation.c
 		SectionHeaderComponent,
 		ConnectDeviceComponent,
 		LucideAngularModule,
-		OrganisationComponent
+		OrganisationComponent,
+		EntryAnimDirective
 	],
 	templateUrl: './network-feature.component.html',
 	styleUrl: './network-feature.component.css',

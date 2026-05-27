@@ -25,7 +25,8 @@
     --button-height-md: 32px;
     --button-height-lg: 36px;
 
-    --transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    --transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -151,6 +152,7 @@
     --color-clr-text-dark: #d8dee8;
     --color-clr-text-secondary: #667085;
     /* --color-clr-text-secondary-dark: #CBD5E1; */
+    --color-clr-text-white: var(--color-clr-bg-card);
     --color-clr-text-secondary-dark: color-mix(in oklab, #CBD5E1 70%, transparent);
     --color-clr-text-disable: #98A2B3;
     --color-clr-text-disable-dark: #94A3B8;
@@ -610,6 +612,70 @@ aside {
     }
 }
 
+.button.tertial.link {
+    color: var(--color-clr-text-secondary);
+
+    &:hover{
+        border-color: color-mix(in oklab, var(--color-clr-hover) 40%, transparent);
+        background: var(--color-clr-button-ghost);
+        color: var(--color-clr-hover);
+    }
+
+    &:where(.dark, .dark *){
+        border-color: transparent;
+        color: var(--color-clr-text-secondary-dark);
+        
+        &:hover{
+            background: color-mix(in oklab, var(--color-clr-button-ghost) 40%, transparent);
+            /* border-color: color-mix(in oklab, var(--color-clr-hover) 40%, transparent);
+            color: var(--color-clr-hover); */
+        }
+    }
+
+    @media (width <= 64rem /* 1024px  lg*/) {
+        color: var(--color-clr-text);
+
+        &:where(.dark, .dark *){
+            border-color: transparent;
+            color: var(--color-clr-text-secondary-dark);
+            
+            &:hover{
+                background: color-mix(in oklab, var(--color-clr-button-ghost) 40%, transparent);
+                /* border-color: color-mix(in oklab, var(--color-clr-hover) 40%, transparent);
+                color: var(--color-clr-hover); */
+            }
+        }
+    }
+}
+
+/* .button.danger {
+    border-color: var(--color-clr-button);
+    color: var(--color-clr-button-text);
+    background: var(--color-clr-button);
+    transition: color .1s ease;
+    
+    &:hover{
+        background: var(--color-clr-error);
+        border-color: var(--color-clr-button-hover);
+    }
+    &:active{
+        background: var(--color-clr-button-active);
+        border-color: var(--color-clr-active);
+    }
+    &:disabled{
+        background: var(--color-clr-button-disable);
+        border-color: transparent;
+        color: var(--color-clr-text-disable);
+        cursor: default;
+        
+        &:where(.dark, .dark *){
+            background: var(--color-clr-button-disable-dark);
+            border-color: var(--color-clr-button-disable-dark);
+            color: var(--color-clr-text-disable-dark);
+        }
+    }
+} */
+
 .button.cta{
     &:disabled{
         /* color: var(--color-clr-button); */
@@ -653,9 +719,9 @@ aside {
     &:has(.input-text:active){
         border-color: var(--color-clr-border-active)
     }
-    &:has(.input-text:valid){
+    /* &:has(.input-text:valid){
         border-color: var(--color-clr-border-input-valid)
-    }
+    } */
     &:has(.input-text:disabled){
         background: var(--color-clr-input-disable);
         &:has(.input-text:active){
@@ -712,6 +778,10 @@ aside {
     }
 }
 
+.label-input.primary .input-text{
+    color: var(--color-clr-text-dark);
+}
+
 .label-input .input-text {
     padding-block: var(--spacing-sm);
 }
@@ -735,8 +805,9 @@ aside {
 .label-input.primary .label-1{
     color: var(--color-clr-text-dark);
 }
-.input-text:focus ~ .label-1,
-.input-text:valid ~ .label-1 {
+.label-input .input-text:focus ~ .label-1,
+.label-input .input-text:valid ~ .label-1,
+.label-input.isValid .input-text ~ .label-1 {
     color: transparent;
 }
 
@@ -756,21 +827,23 @@ aside {
     color: var(--color-clr-text-dark);
 } */
 
-.input-text:focus ~ .label-2,
-.input-text:valid ~ .label-2 {
-    top: -30%;
-    left: 2%;
+.label-input .input-text:focus ~ .label-2,
+.label-input .input-text:valid ~ .label-2,
+.label-input.isValid .input-text ~ .label-2 {
+    top: -40%;
+    left: -2%;
     height: fit-content;
     content: '';
 }
 
 .label-input.textarea .label-2{
     top: 25%;
+    left: 2%;
 }
 .input-text.textarea:focus ~ .label-2,
 .input-text.textarea:valid ~ .label-2 {
-    top: -40%;
-    left: 1%;
+    top: -50%;
+    left: -1%;
 }
 
 /* ==================== */
@@ -838,22 +911,41 @@ html.dark .input-text.primary:valid ~ .label-2::after {
 html.dark .input-text:focus ~ .label-2::after {
     color: var(--color-clr-primary);
 }
-.input-text:user-valid ~ .label-2::after,
-html.dark .input-text:user-valid ~ .label-2::after {
+.label-input.isValid .input-text:user-valid ~ .label-2::after,
+html.dark .label-input.isValid .input-text:user-valid ~ .label-2::after {
     color: var(--color-clr-success);
 }
-.input-text:user-invalid ~ .label-1::after,
-html.dark .input-text:user-invalid ~ .label-1::after
+/* .label-input.isInValid .input-text:user-invalid ~ .label-1::after,
+html.dark .label-input.isInValid .input-text:user-invalid ~ .label-1::after
 {
     color: var(--color-clr-error);
+} */
+
+.isValid{
+    border: 1px solid var(--color-clr-success) !important;
+    /* color: var(--color-clr-success) !important; */
+}
+
+.isInvalid{
+    border: 1px solid var(--color-clr-error) !important;
+    /* color: var(--color-clr-error) !important; */
 }
 
 /* ====================== */
 /* text label =============== */
 
+/* username ======= */
+.label-2.username::after{
+    content: 'ex: Massamba, Massamba01, Massamba_01' !important;
+}
+.input-text:focus ~ .label-2.username::after,
+.input-text:valid ~ .label-2.username::after {
+    content: 'Entrez le nom d\'utilisateur' !important;
+}
+
 /* name ======= */
 .label-2.name::after{
-    content: 'ex. Massamba' !important;
+    content: 'ex: Massamba' !important;
 }
 .input-text:focus ~ .label-2.name::after,
 .input-text:valid ~ .label-2.name::after {
@@ -862,7 +954,7 @@ html.dark .input-text:user-invalid ~ .label-1::after
 
 /* first name ==== */
 .label-2.firstName::after{
-    content: 'ex. Nathan' !important;
+    content: 'ex: Nathan' !important;
 }
 .input-text:focus ~ .label-2.firstName::after,
 .input-text:valid ~ .label-2.firstName::after {
@@ -871,11 +963,11 @@ html.dark .input-text:user-invalid ~ .label-1::after
 
 /* full name ==== */
 .label-2.fullName::after{
-    content: 'ex. Nathan Sasa' !important;
+    content: 'ex: Nathan Sasa' !important;
 }
 .input-text:focus ~ .label-2.fullName::after,
 .input-text:valid ~ .label-2.fullName::after {
-    content: 'Nom complet' !important;
+    content: 'Entre votre nom complet' !important;
 }
 
 /* profession ==== */
@@ -919,7 +1011,7 @@ html.dark .input-text:user-invalid ~ .label-1::after
 }
 .input-text:focus ~ .label-2.mail::after,
 .input-text:valid ~ .label-2.mail::after {
-    content: 'Mail' !important;
+    content: 'Entrez votre email' !important;
 }
 
 /* telephone ===== */
@@ -977,6 +1069,22 @@ html.dark .input-text:user-invalid ~ .label-1::after
     background: transparent;
     /* border-color: transparent; */
     box-shadow: none;
+}
+.card.rounded-small {
+
+    border-radius: 8px;
+    @media (width >= 20rem /* sm */) {
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 40rem /* 640px  md*/) {
+        border-radius: var(--radius-sm);
+    }
+    @media (width >= 64rem /* 1024px lg+ */) {
+        border-radius: var(--radius-sm);
+    }
+}
+.card.padding-not {
+    padding: 0;
 }
 
 .card-icon {
@@ -1236,9 +1344,26 @@ html.dark .input-text:user-invalid ~ .label-1::after
 /* ======================================================= */
 /* animations ================================================ */
 /* entrée ==================*/
+.elVisible {
+    opacity: 0;
+    transform: translateY(var(--entryTranslate));
+    animation: fadeIn 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    animation-delay: var(--entryDelay);
+}
+@keyframes fadeIn {
+    from {
+        transform: translateY(var(--entryTranslate));
+        opacity: 0
+    } to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+
 .text-focus-in {
-	-webkit-animation: text-focus-in .7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	animation: text-focus-in .7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	-webkit-animation: text-focus-in .3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: text-focus-in .3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 @-webkit-keyframes text-focus-in {
@@ -1325,12 +1450,15 @@ html.dark .input-text:user-invalid ~ .label-1::after
     }
 }
 
-/* transition */
+/* ======================================================= */
+/* transitions ================================================ */
 .cubicTransition{
     transition:  .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
- 
+.easeTransition {
+    transition: all .3s var(--ease-out);
+}
 
 
 /* ===================================== */
@@ -1472,4 +1600,33 @@ html.dark .input-text:user-invalid ~ .label-1::after
 /* =============== */
 .p-rating-option-active .p-rating-icon {
     color: var(--p-rating-icon-active-color);
+}
+
+
+
+/* Dist classes =============================*/
+/* Layout of Dashboard, products, etc.*/
+.navContainer{
+    width: 6.5%;
+}
+.navContainer.active{
+    width: 19%;
+}
+
+.headerBodyContainer{
+    width: 93.5%;
+}
+.headerBodyContainer.active{
+    width: 91%;
+}
+
+.separator {
+    width: 100%;
+    height: 2px;
+    margin-block: 4px;
+    background: var(--color-clr-border);
+
+    &:where(.dark, .dark *){
+        background: var(--color-clr-border-dark);
+    }
 }

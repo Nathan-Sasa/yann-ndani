@@ -1,0 +1,43 @@
+<section
+    class="w-screen h-screen relative flex"
+    >
+    <div 
+        class="navContainer relative h-full hidden lg:flex lg:w-1/20 cubicTransition"
+        [ngClass]="{
+            'active': navActive === 1
+        }"
+        >
+        <app-dist-aside 
+            (trackNav)="handleTrack($event)"
+            class="w-full relative"
+        ></app-dist-aside>
+    </div>
+    <section 
+        class="headerBodyContainer relative h-full flex flex-col cubicTransition max-lg:w-full!"
+        [ngClass]="{
+            'active': navActive === 1
+        }"
+        >
+        <app-dist-header [headerTrack]="navActive"></app-dist-header>
+        <section
+            class="h-[92vh] overflow-y-auto flex flex-col px-4 pb-md gap-2 relative"
+            >
+            <app-dash-count
+                class="w-full relative"
+            ></app-dash-count>
+            <div
+                class="w-full grid grid-cols-1 lg:grid-cols-2 relative gap-sm mb-sm"
+                >
+                <app-dash-chart></app-dash-chart>
+                <app-dash-chart-tresorerie></app-dash-chart-tresorerie>
+            </div>
+            <div
+                class="w-full grid grid-cols-1 lg:grid-cols-4 relative gap-sm"
+                >
+                <app-dash-products
+                    class="col-span-1 lg:col-span-3 relative"
+                ></app-dash-products>
+            </div>
+        </section>
+    </section>
+</section>

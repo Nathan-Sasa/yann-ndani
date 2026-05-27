@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { LucideAngularModule, PlayIcon, XIcon, DownloadIcon, CogIcon } from 'lucide-angular';
 import { SectionHeaderComponent } from '../../layouts/section-header/section-header.component';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive';
 
 @Component({
 	selector: 'app-installation',
 	imports: [
 		LucideAngularModule,
-		SectionHeaderComponent
+		SectionHeaderComponent,
+		EntryAnimDirective
 	],
 	templateUrl: './installation.component.html',
 	styleUrl: './installation.component.css',

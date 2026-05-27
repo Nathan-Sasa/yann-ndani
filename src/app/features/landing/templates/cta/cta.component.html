@@ -19,7 +19,10 @@
     </div>
 
     <section
-        class="min-h-[70vh] flex flex-col gap-main z-5 justify-center items-center text-center"
+        appEntryAnim
+        [delay]="200"
+        [translateY]="0"
+        class="min-h-[70vh] flex flex-col gap-main z-5 justify-center items-center text-center opacity-0"
         >
         <h3 
             class="text-caption text-base text-base-caption"
@@ -36,11 +39,12 @@
             >
             Gérez votre stock de manière efficace et sans effort grâce à notre application de gestion d'inventaire conviviale et puissante.
         </p>
-        <button
+        <a
+            [routerLink]="['/dashboard']"
             class="getButton button primary border-clr-hover! bg-clr-hover! hover:bg-clr-primary! hover:scale-110! active:bg-clr-active! active:border-clr-active! text-title-2! text-clr-text-dark! p-main! cubicTransition"
             >
             Commencer maintenant
-        </button>
+        </a>
     </section>
 
     <app-contacts

@@ -5,6 +5,7 @@ import { SectionHeaderComponent } from '../../layouts/section-header/section-hea
 
 import gsap  from 'gsap'
 import { RatingComponent } from '../../layouts/rating/rating.component';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive';
 
 @Component({
 	selector: 'app-testimonial',
@@ -12,7 +13,8 @@ import { RatingComponent } from '../../layouts/rating/rating.component';
 		SectionHeaderComponent,
 		FormsModule, 
 		Rating,
-		RatingComponent
+		RatingComponent,
+		EntryAnimDirective
 	],
 	templateUrl: './testimonial.component.html',
 	styleUrl: './testimonial.component.css',

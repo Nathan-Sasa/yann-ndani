@@ -30,6 +30,8 @@
     "@angular/router": "^20.2.0",
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/postcss": "^4.2.4",
+    "ag-charts-angular": "^13.3.0",
+    "ag-charts-community": "^13.3.0",
     "gsap": "^3.14.2",
     "lucide-angular": "^0.577.0",
     "postcss": "^8.5.12",

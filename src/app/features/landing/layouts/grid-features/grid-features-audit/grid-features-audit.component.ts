@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { EntryAnimDirective } from '../../../../../shared/directives/entry-anim.directive';
 
 @Component({
 	selector: 'app-grid-features-audit',
 	imports: [
-		
+		EntryAnimDirective
 	],
 	templateUrl: './grid-features-audit.component.html',
 	styleUrl: './grid-features-audit.component.css',

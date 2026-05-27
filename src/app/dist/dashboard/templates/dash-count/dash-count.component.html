@@ -1,0 +1,58 @@
+<section
+    class="w-full flex flex-col relative"
+    >
+    <div
+        appEntryAnim
+        [delay]="500"
+        [threshold]="0.5"
+        [translateY]="25"
+        class="flex items-center gap-sm title-4 py-sm opacity-0"
+        >
+        <p>
+            Bienvenu
+            {{user().fistName}}
+            !
+        </p>
+    </div>
+    <ul
+        class="w-full grid max-[321px]:grid-cols-1 grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-sm relative my-sm"
+        >
+        @for(count of counts ; track $index){
+            <li
+                appEntryAnim
+                [delay]="500"
+                [threshold]="0.5"
+                [translateY]="15"
+                class="flex relative opacity-0"
+                >
+                <a 
+                    [routerLink]="[count.route]"
+                    class="w-full flex relative card transparent rounded-small padding-not group overflow-hidden"
+                    >
+                    <span
+                        class="w-6/10 h-full flex flex-col gap-md text-start p-md border-r border-line-color group-hover:border-clr-primary! easeTransition"
+                        >
+                        <p
+                            class="text-base secondary font-semibold! group-hover:text-clr-text! dark:group-hover:text-clr-text-dark! cubicTransition"
+                            >
+                            {{count.name}}
+                        </p>
+                        <p
+                            class="title-4 group-hover:text-clr-hover! easeTransition"
+                            >
+                            {{count.mount | currency: 'USD':'symbol': '1.2-2' : 'fr' | replaceComma}}
+                        </p>
+                    </span>
+                    <span
+                        class="w-4/10 h-full flex items-center justify-center bg-clr-active-transparent group-hover:bg-clr-hover! easeTransition"
+                        >
+                        <lucide-icon
+                            [img]="count.icon"
+                            class="md:scale-120 lg:scale-140 text-base secondary group-hover:text-clr-text-white! dark:group-hover:text-clr-text-dark! easeTransition"
+                        ></lucide-icon>
+                    </span>
+                </a>
+            </li>
+        }
+    </ul>
+</section>

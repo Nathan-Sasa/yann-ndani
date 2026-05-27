@@ -9,7 +9,11 @@
         <!-- 1 download  -->
         <!-- ======================================================================== -->
         <li
-            class="w-full card  relative flex flex-col lg:flex-col gap-main"
+            appEntryAnim
+            [delay]="500"
+            [threshold]="0.2"
+            [translateY]="15"
+            class="w-full card  relative flex flex-col lg:flex-col gap-main opacity-0"
             >
             <div
                 class="flex gap-sm items-center"
@@ -60,7 +64,11 @@
         <!-- 2 installation  -->
         <!-- ======================================================================== -->
         <li
-            class="w-full card  relative flex flex-col lg:flex-col gap-main"
+            appEntryAnim
+            [delay]="500"
+            [threshold]="0.2"
+            [translateY]="15"
+            class="w-full card  relative flex flex-col lg:flex-col gap-main opacity-0"
             >
             <div
                 class="flex gap-sm items-center"

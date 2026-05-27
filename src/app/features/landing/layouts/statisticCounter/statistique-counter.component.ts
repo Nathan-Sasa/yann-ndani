@@ -13,6 +13,7 @@ export class StatistiqueCounterComponent implements AfterViewInit, OnDestroy {
 	projectCount = 0
 	userCount = 0
 	partnerCount = 0
+	satisfaction = 0
 
 	private hasAnimated = false
 	private observer!: IntersectionObserver
@@ -69,11 +70,15 @@ export class StatistiqueCounterComponent implements AfterViewInit, OnDestroy {
 
 		setTimeout(() => {
 			this.animateValue(0, 1500, 1500, (val) => this.userCount = val)
-		}, 300);
+		}, 150);
 
 		setTimeout(() => {
 			this.animateValue(0, 73, 1500, (val) => this.partnerCount = val)
-		}, 600);
+		}, 350);
+
+		setTimeout(() => {
+			this.animateValue(0, 96, 1500, (val) => this.satisfaction = val)
+		}, 450);
 	}
 
 	animateValue(start: number, end: number, duration: number, callback: (val: number) => void) {

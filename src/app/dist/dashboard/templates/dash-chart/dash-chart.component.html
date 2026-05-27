@@ -1,0 +1,29 @@
+<div
+    appEntryAnim
+    [delay]="500"
+    [threshold]="0.3"
+    [translateY]="15"
+    class="card transparent padding-not rounded-small min-h-88 h-[60vh] md:h-[40vh] lg:h-[60vh] relative flex flex-col overflow-hidden group opacity-0"
+    >
+    <div
+        class="w-full h-1/10 p-sm border-b border-line-color bg-clr-active-transparent group-hover:border-clr-hover! group-hover:bg-clr-hover! easeTransition"
+        >
+        <p
+            class="text-base font-semibold! group-hover:text-clr-text-white! easeTransition"
+            >
+            Rapport de vente
+        </p>
+    </div>
+    <div
+        class="w-full h-9/10 relative flex items-center justify-center"
+        >
+        <div
+            class="w-full h-full relative "
+            >
+            <ag-charts
+                [options]="options"
+                class="dash-chart"
+            ></ag-charts>
+        </div>
+    </div>
+</div>

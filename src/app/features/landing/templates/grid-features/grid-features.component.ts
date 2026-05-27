@@ -4,6 +4,7 @@ import { GridFeaturesChartComponent } from '../../layouts/grid-features/grid-fea
 import { GridFeaturesStatisticComponent } from '../../layouts/grid-features/grid-features-statistic/grid-features-statistic.component';
 import { GridFeaturesEmployeeComponent } from '../../layouts/grid-features/grid-features-employee/grid-features-employee.component';
 import { GridFeaturesAuditComponent } from '../../layouts/grid-features/grid-features-audit/grid-features-audit.component';
+import { EntryAnimDirective } from '../../../../shared/directives/entry-anim.directive';
 
 @Component({
     selector: 'app-grid-features',
@@ -12,7 +13,8 @@ import { GridFeaturesAuditComponent } from '../../layouts/grid-features/grid-fea
 		GridFeaturesChartComponent,
 		GridFeaturesStatisticComponent,
 		GridFeaturesEmployeeComponent,
-		GridFeaturesAuditComponent
+		GridFeaturesAuditComponent,
+		EntryAnimDirective
 	],
     templateUrl: './grid-features.component.html',
     styleUrl: './grid-features.component.css',
