@@ -1,8 +1,128 @@
-<section></section>
-<p>dist component works!</p>
+<section
+    class="w-screen min-h-screen flex flex-col relative py-section-y px-mmain gap-main"
+    >
+    @if(!is_company() && !is_group()){
+        <app-loader-custom
+            [size]="'full'"
+        ></app-loader-custom>
+    }
+
+    @if(is_company()){
+        <div
+            class="w-full realtive flex flex-col justify-center"
+            >
+            <div
+                class="w-full relative flex items-center justify-center py-main"
+                >
+                <p
+                    class="title-3"
+                    >
+                    {{companies().length > 1 ? 'Vos entreprises' : 'Votre entreprise'}}
+                </p>
+            </div>
+            <div
+                class="w-full relative flex flex-wrap justify-center gap-main"
+                >
+                @for (company of companies(); track $index) {
+                    <a
+                        appEntryAnim
+                        [translateY]="20"
+                        [threshold]="0.3"
+                        [routerLink]=""
+                        class="w-64 h-52 rounded-lg flex flex-col card items-center justify-center gap-main cursor-pointer"
+                        >
+                        <span
+                            class="card-avatar avatar-md"
+                            >
+                            @if(company.logo){
+                                <img 
+                                    [src]="company.logo" 
+                                    [alt]="company.name"
+                                    class="skeletonBg"
+                                >
+                            }
+                            @if(!company.logo){
+                                <p
+                                    class="w-full h-full rounded-full flex items-center justify-center title-3 {{backgroundCompaniesColor()}}"
+                                    >
+                                    {{company.name[0] | uppercase}}
+                                </p>
+                            }
+                        </span>
+                        <p
+                            class="title-4"
+                            >
+                            {{company.name}}
+                        </p>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+
+    @if(is_group()){
+        <div
+            class="w-full realtive flex flex-col justify-center"
+            >
+            <div
+                class="w-full relative flex items-center justify-center py-main"
+                >
+                <p
+                    class="title-3"
+                    >
+                    {{group_joined().length > 1 ? 'Vos Invitations' : 'Invitation'}}
+                </p>
+            </div>
+            <div
+                class="w-full relative flex flex-wrap justify-center gap-main"
+                >
+                @for (group of group_joined(); track $index) {
+                    <a
+                        appEntryAnim
+                        [translateY]="20"
+                        [threshold]="0.3"
+                        [routerLink]=""
+                        class="w-60 h-52 rounded-lg flex flex-col card items-center justify-center gap-main cursor-pointer"
+                        >
+                        <span
+                            class="card-avatar avatar-md"
+                            >
+                            @if(group.logo){
+                                <img 
+                                    [src]="group.logo" 
+                                    [alt]="group.name"
+                                    class="skeletonBg"
+                                >
+                            }
+                            @if(!group.logo){
+                                <p
+                                    class="w-full h-full rounded-full flex items-center justify-center title-3 {{backgroundGroupColor()}}"
+                                    >
+                                    {{group.name[0] | uppercase}}
+                                </p>
+                            }
+                        </span>
+                        <p
+                            class="title-4"
+                            >
+                            {{group.name}}
+                        </p>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+
+</section>
+
+
+
+
+<!-- <p>dist component works!</p>
 <button
     class="button primary"
     (click)="disconnect()"
     >
     Décconexion
-</button>
+</button> -->
+

@@ -5,9 +5,13 @@ export const environment = {
 
     // authentication apis url =======================
     // ======================================
-    prefixAuthUrl: baseUrl,
+    prefixAuthUrl: `${baseUrl}/api/auth`,
     loginApiUrl: `${baseUrl}`,
-    registerApiUrl: `${baseUrl}/`
+    registerApiUrl: `${baseUrl}/`,
+    refreshApiUrl: `${baseUrl}/api/token/refresh/`,
+    
+
+    distApiUrl: `${baseUrl}/yann-ndani/api`
 
 
     // base/api/auth/login/

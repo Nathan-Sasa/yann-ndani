@@ -3,7 +3,7 @@
     [delay]="500"
     [threshold]="0.3"
     [translateY]="15"
-    class="card transparent padding-not rounded-small min-h-88 h-[60vh] md:h-[40vh] lg:h-[60vh] relative flex flex-col overflow-hidden group opacity-0"
+    class="card transparent padding-not rounded-small min-h-52 lg:min-h-88 max-[321px]:h-[70vh] h-[50vh] md:h-[40vh] lg:h-[60vh] relative flex flex-col overflow-hidden group opacity-0"
     >
     <div
         class="w-full h-1/10 p-sm border-b border-line-color bg-clr-active-transparent group-hover:border-clr-hover! group-hover:bg-clr-hover! easeTransition"
@@ -20,10 +20,12 @@
         <div
             class="w-full h-full relative "
             >
-            <ag-charts
-                [options]="options"
-                class="dash-chart"
-            ></ag-charts>
+            @defer(){
+                <ag-charts
+                    [options]="options()"
+                    class="block w-full h-full"
+                ></ag-charts>
+            }
         </div>
     </div>
 </div>

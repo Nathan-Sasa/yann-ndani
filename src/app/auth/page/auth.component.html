@@ -79,7 +79,7 @@
 
                     <!-- CHAMPS D'INSERTION =============================================== -->
                     <div
-                        class="w-full relative flex flex-col p-4 lg:gap-lg gap-8">
+                        class="w-full relative flex flex-col p-4 lg:gap-lg gap-sm">
                         <fieldset
                             [disabled]="isSubmitting()"
                             class="w-full flex px-main lg:px-section-y-xl relative">
@@ -161,7 +161,7 @@
                                         formControlName="password1"
                                         id="password1"
                                         autocorrect="off"
-                                        autocomplete="off"
+                                        autocomplete="new-password"
                                         required
                                         class="input-text"
                                     >
@@ -226,11 +226,19 @@
                                 [ngClass]="{'disableForm': authForm.invalid}"
                                 class="w-full button primary "
                                 >
-                                @if(authType === 'login'){
-                                    Se connecter
+                                @if(loading()){
+                                    <app-loader-spin
+                                        [loaderTheme]="'primary'"
+                                        [size]="'xs'"
+                                    ></app-loader-spin>
                                 }
-                                @if(authType === 'register'){
-                                    S'inscrire
+                                @if(!loading()){
+                                    @if(authType === 'login'){
+                                        Se connecter
+                                    }
+                                    @if(authType === 'register'){
+                                        S'inscrire
+                                    }
                                 }
                             </button>
                         </div>
@@ -271,6 +279,22 @@
                             }
                         </p>
                     </div>
+                    <!-- <div
+                        class="w-full relative flex flex-col p-4 lg:gap-lg gap-lg"
+                        >
+                        <div
+                            class="w-full flex px-main lg:px-section-y-xl relative"
+                            >
+                            <button
+                                class="button secondary"
+                                >
+                                <app-loader-spin
+                                    [loaderTheme]="'default'"
+                                    [size]="'xs'"
+                                ></app-loader-spin>
+                            </button>
+                        </div>
+                    </div> -->
                 </form>
             </div>
         </div>

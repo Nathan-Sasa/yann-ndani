@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { infoApp } from '../../shared/utils/info-app';
 import { SeparationComponent } from '../../shared/components/separator/separation.component';
+import { LoaderSpinComponent } from '../../shared/components/loaders/loader-spin/loader-spin.component';
 
 interface IAuthFrom {
 	email: FormControl<string>
@@ -22,6 +23,7 @@ interface IAuthFrom {
 		RouterModule,
 		CommonModule,
 		ReactiveFormsModule,
+		LoaderSpinComponent
 	],
 	templateUrl: './auth.component.html',
 	styleUrl: './auth.component.css',
@@ -34,6 +36,7 @@ export class AuthComponent implements OnInit {
 
 	authForm: FormGroup<IAuthFrom>
 	isSubmitting = signal(false)
+	loading = signal<boolean>(false)
 	destroyRef = inject(DestroyRef)
 
 	errorMessage = null
@@ -84,7 +87,7 @@ export class AuthComponent implements OnInit {
 					validators: [
 						Validators.required,
 						Validators.minLength(8),
-						Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+						// Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
 					],
 					nonNullable: true,
 				})
@@ -119,13 +122,15 @@ export class AuthComponent implements OnInit {
 	submitForm(): void {
 		if (this.authForm.invalid) {
 			this.authForm.markAllAsTouched();
-			console.log('Formulaire invalide')
+			// console.log('Formulaire invalide')
       		return;
     	}
 
 		this.isSubmitting.set(true)
+		this.loading.set(true)
 
-		console.log('Formulaire : ', this.authForm.value)
+		// console.log('Formulaire : ', this.authForm.value)
+		console.log('Connexion ...')
 
 		const {email, password } = this.authForm.value
 
@@ -142,12 +147,13 @@ export class AuthComponent implements OnInit {
 			.pipe( takeUntilDestroyed(this.destroyRef))
 			.subscribe({
 				next: (res) => {
-					console.log('Utilisateur connecté', res)
 					this.authForm.reset()
-					this.router.navigate(['/dist'])
+					this.loading.set(false)
+					this.router.navigate([`/dist`])
 				},
 				error: (err) => {
 					this.isSubmitting.set(false)
+					this.loading.set(false)
 					console.log('Erreur de connexion ')
 				},
 			})

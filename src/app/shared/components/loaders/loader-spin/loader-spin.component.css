@@ -1,0 +1,85 @@
+@property --rotate {
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
+}
+
+@keyframes eff {
+	from {
+		--rotate: 360deg;
+	}
+	to {
+		--rotate: -360deg;
+	}
+}
+
+.banner {
+    transition: all .5 ease ;
+    animation: eff 2s ease infinite;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.banner.loaderDefault {
+    /* animation: eff 2s ease infinite; */
+    background-image: conic-gradient(
+        from var(--rotate), 
+        var(--color-clr-primary) 50%,
+        var(--color-clr-bg-page)
+    );
+    &:where(.dark, .dark *) {
+        background-image: conic-gradient(
+            from var(--rotate),
+            var(--color-clr-primary) 10%,
+            var(--color-clr-bg-page-dark) 80%
+        );
+    }
+}
+
+.banner.loaderPrimary {
+    background-image: conic-gradient(
+        from var(--rotate), 
+        var(--color-clr-bg-page) 50%,
+        var(--color-clr-primary)
+    );
+    &:where(.dark, .dark *) {
+        background-image: conic-gradient(
+            from var(--rotate),
+            var(--color-clr-bg-page) 10%,
+            var(--color-clr-primary) 80%
+        );
+    }
+}
+
+.banner.sm{
+    width: 24px;
+    height: 24px;
+}
+.banner.md {
+    width: 32px;
+    height: 32px;
+}
+
+.banner.xs {
+    width: 16px;
+    height: 16px;
+}
+
+.banner .bannerChild {
+    width: 80%;
+    height: 80%;
+    background: var(--color-clr-bg-page);
+
+    &:where(.dark, .dark *){
+        background: var(--color-clr-bg-page-dark);
+    }
+}
+
+.banner.banner.loaderPrimary .bannerChild {
+    background: var(--color-clr-primary);
+    &:where(.dark, .dark *) {
+        background: var(--color-clr-primary)
+    }
+}

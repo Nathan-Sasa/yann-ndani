@@ -22,7 +22,7 @@ export class ThemeAppService {
     private _currentThemePreference = signal<AppTheme | null>(null);
 
     // Thème effectif appliqué (dark ou light) =====
-    private readonly actualTheme = computed(() =>{
+    public readonly actualTheme = computed(() =>{
         const preference = this._currentThemePreference();
         if(preference === AppTheme.Dark) return AppTheme.Dark;
         if(preference === AppTheme.Light) return AppTheme.Light;

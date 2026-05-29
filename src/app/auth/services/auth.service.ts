@@ -1,20 +1,25 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, BehaviorSubject, EMPTY, Subscription, timer } from "rxjs";
+import { Observable, BehaviorSubject, EMPTY, Subscription, timer, throwError } from "rxjs";
 import { Router } from "@angular/router";
 import { map, distinctUntilChanged, tap, shareReplay, catchError } from "rxjs/operators";
-
 import { environment } from '../../../environment/environment'
-
 import { JwtService } from "../services/jwt.service";
-import { IUser } from "../interfaces/auth.interface";
-
 
 export type AuthState = 'authenticated' | 'unauthenticated' | 'unavailable' | 'loading';
 
 interface LoginResponse {
-    token: string;
+    access: string;
+    refresh: string;
     type?: string;
+    user: UserResponse
+}
+
+interface UserResponse {
+    email: string;
+    first_name: string;
+    last_name: string;
+    pk: number;
 }
 
 interface RegisterRequest {
@@ -35,10 +40,12 @@ interface RegisterRequest {
 export class AuthService{
 
     private readonly TOKEN_KEY = 'yann_token'
+    private readonly REFRESH_TOKEN = 'yann_refresh'
     private readonly authPrefixApi = environment.prefixAuthUrl
+    private readonly refreshTokenApi = environment.refreshApiUrl
     
-    private _isLoggedIn$ = new BehaviorSubject<boolean>(this.hasValidToken())
-    private isLoggedIn$ = this._isLoggedIn$.asObservable()
+    private _isLoggedIn$ = new BehaviorSubject<boolean>(this.hasValidToken() || this.hasValidRefreshToken())
+    public isLoggedIn$ = this._isLoggedIn$.asObservable()
 
 
     constructor(
@@ -51,23 +58,37 @@ export class AuthService{
     // Auth API calls
     //-------------------------------------------------------
     login(email: string, password: string): Observable<LoginResponse>{
-        const url = `${this.authPrefixApi}/api/auth/login/`
+        const url = `${this.authPrefixApi}/login/`
         return this.http.post<LoginResponse>(url, {email, password})
             .pipe(
-                tap(res => {
-                    if (res?.token) {
-                        this.saveToken(res.token)
-                        this._isLoggedIn$.next(true)
-                        console.log('Utilisateur connecté')
-                    }
-                })
+                tap(res => { this.handleAuthentication(res)})
             )
     }
 
-    register(payload: RegisterRequest): Observable<any> {
-        const url = `${this.authPrefixApi}/api/auth/register/`
-        return this.http.post(url, payload).pipe(
-            
+    register(payload: RegisterRequest): Observable<LoginResponse> {
+        const url = `${this.authPrefixApi}/register/`
+        return this.http.post<LoginResponse>(url, payload).pipe(
+            tap(res => { this.handleAuthentication(res)})
+        )
+    }
+
+    refreshToken(): Observable<{access: string}> {
+        const refresh = localStorage.getItem(this.REFRESH_TOKEN)
+        if (!refresh) {
+            return throwError(() => new Error('Aucun refresh token disponible'))
+        }
+
+        const url = this.refreshTokenApi
+        return this.http.post<{access: string}>(url, { refresh }).pipe(
+            tap(res => {
+                if(res?.access) {
+                    localStorage.setItem(this.TOKEN_KEY, res.access)
+                }
+            }),
+            catchError(err => {
+                this.logout()
+                return throwError(() => err)
+            })
         )
     }
 
@@ -84,16 +105,21 @@ export class AuthService{
     getToken(): string | null {
         // return window.localStorage['jwtToken']
         return localStorage.getItem(this.TOKEN_KEY)
+        // return localStorage.getItem(this.REFRESH_TOKEN)
     }
 
-    saveToken(token: string): void {
-        // window.localStorage['jwtToken'] = token
-        localStorage.setItem(this.TOKEN_KEY, token)
+    private handleAuthentication(res: LoginResponse): void {
+        if (res?.access && res.refresh) {
+            localStorage.setItem(this.TOKEN_KEY, res.access);
+            localStorage.setItem(this.REFRESH_TOKEN, res.refresh);
+            this._isLoggedIn$.next(true);
+        }
     }
 
     destroyToken(): void {
         // window.localStorage.removeItem('jwtToken')
         localStorage.removeItem(this.TOKEN_KEY)
+        localStorage.removeItem(this.REFRESH_TOKEN)
     }
 
     // extraction du token
@@ -136,15 +162,32 @@ export class AuthService{
         const t = this.getToken()
         return !!t && !this.isTokenExpired(t)
     }
+
+    hasValidRefreshToken(): boolean {
+        const refresh = localStorage.getItem(this.REFRESH_TOKEN);
+        return !this.isTokenExpired(refresh as unknown as string);
+    }
 }
 
 
 
 
 
+// private saveToken(token: string, refresh: string): void {
+//     // window.localStorage['jwtToken'] = token
+//     localStorage.setItem(this.TOKEN_KEY, token)
+//     localStorage.setItem(this.REFRESH_TOKEN, refresh)
+// }
 
 
-
+// voirTokenExtract() {
+//     console.log('token info : ', this.decodeJwtPayload(this.getToken() as unknown as string))
+//     console.log('refresh info : ', this.decodeJwtPayload(localStorage.getItem(this.REFRESH_TOKEN) as unknown as string))
+//     console.log('token exp : ', this.isTokenExpired(this.getToken() as unknown as string))
+//     console.log('refresh exp : ', this.isTokenExpired(localStorage.getItem(this.REFRESH_TOKEN) as unknown as string))
+//     console.log('date : ', Date.now())
+//     console.log('date en milis : ', Math.floor(Date.now() /1000))
+// }
 
 // export class UserService {
 //     private currentUserSubject = new BehaviorSubject<IUser | null>(null)
